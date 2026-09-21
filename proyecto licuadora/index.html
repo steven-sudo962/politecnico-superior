@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Licuadora Interactiva Pro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>BlenderPro <span>Interactive Studio</span></h1>
+      <p>Selecciona tus ingredientes, ajusta la potencia o elige un programa.</p>
+    </header>
+
+    <main class="main-content">
+      <!-- Sección de la Licuadora -->
+      <section class="blender-section">
+        <div class="blender-stage">
+          <div class="blender-wrapper" id="blenderWrapper">
+            
+            <!-- Tapa de la licuadora -->
+            <div class="lid">
+              <div class="lid-cap"></div>
+            </div>
+
+            <!-- Jarra / Vaso -->
+            <div class="jar" id="jar">
+              <div class="reflections"></div>
+              
+              <!-- Marcas de medida en la jarra -->
+              <div class="measurements">
+                <span>1500 ml —</span>
+                <span>1250 ml —</span>
+                <span>1000 ml —</span>
+                <span>750 ml —</span>
+                <span>500 ml —</span>
+                <span>250 ml —</span>
+              </div>
+
+              <!-- Canvas donde se renderiza la mezcla, partículas e ingredientes -->
+              <canvas id="blendCanvas" width="220" height="320"></canvas>
+
+              <!-- Cuchillas -->
+              <div class="blades-assembly">
+                <div class="blade blade-1" id="blade1"></div>
+                <div class="blade blade-2" id="blade2"></div>
+                <div class="blade-center"></div>
+              </div>
+            </div>
+
+            <!-- Base de la Licuadora -->
+            <div class="base">
+              <div class="base-top"></div>
+              
+              <!-- Pantalla LCD -->
+              <div class="lcd-display">
+                <div class="lcd-text" id="lcdStatus">STANDBY</div>
+                <div class="lcd-timer" id="lcdTimer">00:00</div>
+              </div>
+
+              <!-- Panel de Control Principal -->
+              <div class="controls-panel">
+                <div class="knob-container">
+                  <span class="knob-label">Potencia</span>
+                  <input type="range" id="speedKnob" min="0" max="5" value="0" step="1" />
+                  <div class="knob-readout" id="speedReadout">OFF</div>
+                </div>
+
+                <div class="button-group">
+                  <button class="btn btn-pulse" id="btnPulse">PULSE</button>
+                  <button class="btn btn-stop" id="btnStop">STOP</button>
+                </div>
+
+                <!-- Modos Automáticos -->
+                <div class="modes-grid">
+                  <button class="btn-mode" data-mode="smoothie">Smoothie</button>
+                  <button class="btn-mode" data-mode="ice">Hielo</button>
+                  <button class="btn-mode" data-mode="soup">Sopa</button>
+                  <button class="btn-mode" data-mode="clean">Lavar</button>
+                </div>
+              </div>
+            </div>
+
+          </div> <!-- /blender-wrapper -->
+        </div>
+
+        <!-- Vaso Servido (Aparece tras licuar) -->
+        <div class="glass-container">
+          <h3>Vaso Servido</h3>
+          <div class="glass">
+            <div class="glass-fill" id="glassFill"></div>
+          </div>
+          <button class="btn btn-secondary" id="btnPour" disabled>Servir en Vaso</button>
+        </div>
+      </section>
+
+      <!-- Panel Lateral de Ingredientes y Opciones -->
+      <aside class="ingredients-panel">
+        <h2>Ingredientes</h2>
+        <p class="subtitle">Toca un ingrediente para añadirlo a la jarra</p>
+        
+        <div class="ingredients-grid">
+          <button class="ing-btn" data-color="#ff4757" data-name="Fresa">🍓 Fresa</button>
+          <button class="ing-btn" data-color="#ffa502" data-name="Naranja">🍊 Naranja</button>
+          <button class="ing-btn" data-color="#2ed573" data-name="Espinaca">🥬 Espinaca</button>
+          <button class="ing-btn" data-color="#eccc68" data-name="Banano">🍌 Banano</button>
+          <button class="ing-btn" data-color="#70a1ff" data-name="Hielo">🧊 Hielo</button>
+          <button class="ing-btn" data-color="#ffffff" data-name="Leche">🥛 Leche</button>
+          <button class="ing-btn" data-color="#1e90ff" data-name="Agua">💧 Agua</button>
+          <button class="ing-btn" data-color="#8e44ad" data-name="Mora">🫐 Mora</button>
+        </div>
+
+        <h3>Recetas Rápidas</h3>
+        <div class="presets-list">
+          <button class="preset-btn" id="presetBerry">Batido de Frutos Rojos</button>
+          <button class="preset-btn" id="presetGreen">Jugo Verde Detox</button>
+        </div>
+
+        <div class="panel-actions">
+          <button class="btn btn-danger" id="btnClear">Vaciar Licuadora</button>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

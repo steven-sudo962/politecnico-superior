@@ -1,0 +1,453 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #0f172a;
+  color: #f8fafc;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.app-container {
+  max-width: 1100px;
+  width: 100%;
+  background: #1e293b;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+header h1 span {
+  color: #38bdf8;
+  font-weight: 400;
+}
+
+header p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-top: 5px;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 30px;
+}
+
+@media (max-width: 850px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- SECCIÓN DE LA LICUADORA --- */
+.blender-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  background: #0f172a;
+  border-radius: 16px;
+  padding: 30px 20px;
+  border: 1px solid #334155;
+  position: relative;
+  overflow: hidden;
+}
+
+.blender-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blender-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: transform 0.05s ease;
+}
+
+/* Animación de vibración */
+.blender-wrapper.vibrating-1 { animation: shake 0.12s infinite; }
+.blender-wrapper.vibrating-2 { animation: shake 0.09s infinite; }
+.blender-wrapper.vibrating-3 { animation: shake 0.06s infinite; }
+.blender-wrapper.vibrating-4 { animation: shake 0.04s infinite; }
+.blender-wrapper.vibrating-5 { animation: shake 0.02s infinite; }
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  50% { transform: translate(-1px, -1px) rotate(-0.5deg); }
+  100% { transform: translate(1px, -1px) rotate(0.5deg); }
+}
+
+/* Tapa */
+.lid {
+  width: 190px;
+  height: 25px;
+  background: linear-gradient(180deg, #334155 0%, #0f172a 100%);
+  border-radius: 12px 12px 2px 2px;
+  position: relative;
+  z-index: 10;
+  border: 1px solid #475569;
+}
+
+.lid-cap {
+  width: 60px;
+  height: 12px;
+  background: #38bdf8;
+  margin: -8px auto 0;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
+
+/* Jarra de Vidrio */
+.jar {
+  width: 220px;
+  height: 320px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.1) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+  border-radius: 0 0 25px 25px;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+}
+
+#blendCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.reflections {
+  position: absolute;
+  top: 0;
+  left: 15px;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.15), transparent);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.measurements {
+  position: absolute;
+  right: 35px;
+  top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.4);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Cuchillas */
+.blades-assembly {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 20px;
+  z-index: 4;
+}
+
+.blade {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #cbd5e1;
+  height: 6px;
+  border-radius: 3px;
+  transform-origin: center center;
+}
+
+.blade-1 { width: 70px; margin-left: -35px; margin-top: -3px; }
+.blade-2 { width: 50px; margin-left: -25px; margin-top: -3px; transform: rotate(90deg); }
+
+.blade-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  background: #475569;
+  border-radius: 50%;
+  margin-left: -7px;
+  margin-top: -7px;
+}
+
+/* Base Metálica */
+.base {
+  width: 240px;
+  background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+  border-radius: 12px 12px 20px 20px;
+  padding: 20px 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  border: 1px solid #475569;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.base-top {
+  width: 170px;
+  height: 10px;
+  background: #0f172a;
+  border-radius: 5px;
+  margin-top: -25px;
+}
+
+/* Pantalla LCD */
+.lcd-display {
+  background: #064e3b;
+  border: 2px solid #059669;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.8);
+}
+
+.lcd-text {
+  font-family: monospace;
+  color: #34d399;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.lcd-timer {
+  font-family: monospace;
+  color: #a7f3d0;
+  font-size: 1rem;
+}
+
+/* Controles */
+.controls-panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.knob-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: #0f172a;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.knob-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+input[type=range] {
+  width: 80%;
+  accent-color: #38bdf8;
+  cursor: pointer;
+}
+
+.knob-readout {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #38bdf8;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.8rem;
+}
+
+.btn-pulse { background: #eab308; color: #0f172a; }
+.btn-pulse:active { background: #ca8a04; }
+
+.btn-stop { background: #ef4444; color: white; }
+.btn-stop:hover { background: #dc2626; }
+
+.modes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.btn-mode {
+  background: #1e293b;
+  border: 1px solid #475569;
+  color: #cbd5e1;
+  padding: 6px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-mode:hover {
+  background: #334155;
+  color: #fff;
+}
+
+.btn-mode.active {
+  background: #0284c7;
+  color: white;
+  border-color: #38bdf8;
+}
+
+/* Vaso Servido */
+.glass-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.glass-container h3 {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.glass {
+  width: 70px;
+  height: 120px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+}
+
+.glass-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0%;
+  background: transparent;
+  transition: height 1s ease, background-color 0.5s;
+}
+
+.btn-secondary {
+  background: #334155;
+  color: white;
+}
+.btn-secondary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* --- PANEL LATERAL DE INGREDIENTES --- */
+.ingredients-panel {
+  background: #0f172a;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #334155;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ingredients-panel h2 {
+  font-size: 1.2rem;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-top: -10px;
+}
+
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.ing-btn {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.85rem;
+  transition: 0.2s;
+}
+
+.ing-btn:hover {
+  border-color: #38bdf8;
+  transform: translateY(-2px);
+}
+
+.presets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preset-btn {
+  background: #0284c7;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.preset-btn:hover { background: #0369a1; }
+
+.panel-actions {
+  margin-top: auto;
+}
+
+.btn-danger {
+  background: #991b1b;
+  color: white;
+  width: 100%;
+}
+
+.btn-danger:hover { background: #dc2626; }
