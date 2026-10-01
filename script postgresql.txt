@@ -1,0 +1,58 @@
+--create tables clientes
+CREATE TABLE CLIENTES( 
+id_cliente SERIAL PRIMARY KEY,
+nombre VARCHAR(100) NOT NULL,
+apellido VARCHAR(100),
+telefono VARCHAR(20),
+correo VARCHAR(100)
+)
+--create tables empleados
+CREATE TABLE EMPLEADOS( 
+id_empleado SERIAL PRIMARY KEY,
+nombre VARCHAR(100) NOT NULL,
+apellido VARCHAR(100),
+cargo VARCHAR(50)
+)
+--create tables ventas
+CREATE TABLE VENTAS( 
+    id_ventas SERIAL PRIMARY KEY, 
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    id_clientes INT, 
+    id_empleados INT, 
+    total DECIMAL(10,2) DEFAULT 0.00, 
+    CONSTRAINT fk_cliente FOREIGN KEY (id_clientes) REFERENCES clientes(id_cliente) ON DELETE SET NULL, 
+    CONSTRAINT fk_empleado FOREIGN KEY (id_empleados) REFERENCES empleados(id_empleado) ON DELETE SET NULL 
+);
+CREATE TABLE editoriales (
+    id_editorial SERIAL PRIMARY KEY,
+    nombre VARCHAR(150) NOT NULL UNIQUE,
+    pais VARCHAR(100),
+    sitio_web VARCHAR(255),
+    correo_contacto VARCHAR(150)
+);
+
+CREATE TABLE libros (
+    id_libro SERIAL PRIMARY KEY,
+    isbn VARCHAR(20) UNIQUE,
+    titulo VARCHAR(200) NOT NULL,
+    autor VARCHAR(150),
+    id_editorial INT,
+    anio_publicacion INT,
+    precio DECIMAL(10,2) NOT NULL,
+    stock INT NOT NULL DEFAULT 0,
+    CONSTRAINT fk_editorial FOREIGN KEY (id_editorial) 
+    REFERENCES editoriales(id_editorial) ON DELETE SET NULL
+);
+
+CREATE TABLE detalle_venta (
+    id_detalle SERIAL PRIMARY KEY,
+    id_venta INT NOT NULL,
+    id_libro INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio_unitario DECIMAL(10,2) NOT NULL,
+    subtotal DECIMAL(10,2) GENERATED ALWAYS AS (cantidad * precio_unitario) STORED,
+    CONSTRAINT fk_venta FOREIGN KEY (id_venta) 
+    REFERENCES VENTAS(id_ventas) ON DELETE CASCADE,
+    CONSTRAINT fk_libro FOREIGN KEY (id_libro) 
+    REFERENCES libros(id_libro) ON DELETE RESTRICT
+);
