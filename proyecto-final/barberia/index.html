@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
+    <!-- Metadata Principal -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KRONOS Barbería de Alta Gama - Experiencia exclusiva y tradicional de cuidado masculino.">
     <title>KRONOS | Barbería de Alta Gama</title>
-    <!-- Tailwind CSS CDN -->
+
+    <!-- Tailwind CSS Framework CDN & Configuración -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind-config.js"></script>
-    <!-- Google Fonts -->
+
+    <!-- Fuentes Tipográficas Oficiales (Google Fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
+
+    <!-- Iconografía FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
+
+    <!-- Hoja de Estilos Personalizada -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-darkbase text-neutral-200 antialiased selection:bg-gold-500 selection:text-black">
 
-    <!-- Navigation Bar -->
+    <!-- ====================================================================
+         1. NAVEGACIÓN PRINCIPAL
+         ==================================================================== -->
     <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-nav">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- Brand Logo -->
-            <a href="#" class="flex items-center space-x-3 group">
+            <!-- Logotipo Institucional -->
+            <a href="#" class="flex items-center space-x-3 group" aria-label="KRONOS Barbería Inicio">
                 <div class="w-10 h-10 rounded-full border border-gold-400 flex items-center justify-center bg-gold-500/10 text-gold-400 group-hover:bg-gold-500 group-hover:text-black transition-all duration-300">
                     <i class="fa-solid fa-scissors text-lg"></i>
                 </div>
@@ -32,7 +40,7 @@
                 </div>
             </a>
 
-            <!-- Desktop Links -->
+            <!-- Menú de Navegación para Escritorio -->
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wider uppercase text-neutral-300">
                 <a href="#inicio" class="hover:text-gold-400 transition-colors">Inicio</a>
                 <a href="#servicios" class="hover:text-gold-400 transition-colors">Servicios</a>
@@ -41,7 +49,7 @@
                 <a href="#contacto" class="hover:text-gold-400 transition-colors">Ubicación</a>
             </nav>
 
-            <!-- Action Button -->
+            <!-- Botón de Acción Directa -->
             <div class="hidden md:flex items-center space-x-4">
                 <button onclick="openBookingModal()" class="relative group overflow-hidden px-6 py-3 rounded-full border border-gold-400 text-gold-400 font-semibold text-xs uppercase tracking-widest transition-all duration-300 hover:text-black">
                     <span class="absolute inset-0 w-full h-full bg-gold-400 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
@@ -49,13 +57,13 @@
                 </button>
             </div>
 
-            <!-- Mobile Menu Toggle -->
-            <button id="menu-btn" class="md:hidden text-gold-400 focus:outline-none text-2xl p-2" aria-label="Abrir menú">
+            <!-- Botón de Menú Responsive (Móvil) -->
+            <button id="menu-btn" class="md:hidden text-gold-400 focus:outline-none text-2xl p-2" aria-label="Abrir menú" aria-expanded="false">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
+        <!-- Menú Desplegable Móvil -->
         <div id="mobile-menu" class="hidden md:hidden bg-carddark border-b border-gold-500/20 px-6 py-6 space-y-4">
             <a href="#inicio" class="block text-sm uppercase tracking-wider text-neutral-300 hover:text-gold-400 py-1">Inicio</a>
             <a href="#servicios" class="block text-sm uppercase tracking-wider text-neutral-300 hover:text-gold-400 py-1">Servicios</a>
@@ -70,15 +78,18 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- ====================================================================
+         2. SECCIÓN HERO / PORTADA
+         ==================================================================== -->
     <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <!-- Background Overlay with Cinematic Image -->
+        <!-- Fondo Multimedia Cinematográfico -->
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1920" alt="Atmósfera de Barbería" class="w-full h-full object-cover object-center filter brightness-[0.35] scale-105 animate-pulse duration-[10000ms]">
             <div class="absolute inset-0 bg-gradient-to-t from-darkbase via-darkbase/60 to-transparent"></div>
             <div class="absolute inset-0 bg-radial-gradient from-transparent via-darkbase/80 to-darkbase"></div>
         </div>
 
+        <!-- Mensaje Principal y Botones de Conversión -->
         <div class="relative z-10 max-w-5xl mx-auto px-6 text-center py-20">
             <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs uppercase tracking-[0.25em] mb-6 backdrop-blur-sm">
                 <i class="fa-regular fa-gem"></i>
@@ -103,7 +114,7 @@
                 </a>
             </div>
 
-            <!-- Stats Bar -->
+            <!-- Métricas de Impacto -->
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-20 pt-12 border-t border-neutral-800/80 max-w-3xl mx-auto text-left">
                 <div class="p-4 rounded-xl bg-carddark/50 border border-neutral-800 backdrop-blur-sm">
                     <p class="text-3xl sm:text-4xl font-bold font-serif text-gold-400">15+</p>
@@ -121,7 +132,9 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- ====================================================================
+         3. SECCIÓN DE SERVICIOS Y CATÁLOGO
+         ==================================================================== -->
     <section id="servicios" class="py-28 relative bg-gradient-to-b from-darkbase via-[#0f0f0f] to-darkbase">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -132,7 +145,7 @@
                     Cada servicio incluye ritual de toalla caliente, aromaterapia y asesoría de imagen personalizada con bebidas de cortesía.
                 </p>
 
-                <!-- Category Filters -->
+                <!-- Filtros Interactivos por Categoria -->
                 <div class="flex flex-wrap justify-center gap-3 mt-10">
                     <button onclick="filterServices('all')" id="btn-all" class="service-filter-btn px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 bg-gold-500 text-black shadow-md">
                         Todos
@@ -149,9 +162,9 @@
                 </div>
             </div>
 
-            <!-- Services Grid -->
+            <!-- Grilla Dinámica de Servicios -->
             <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service Card 1 -->
+                <!-- Servicio 1 -->
                 <div class="service-card group relative bg-carddark rounded-2xl p-8 border border-neutral-800 hover:border-gold-500/50 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between" data-category="corte">
                     <div>
                         <div class="flex items-center justify-between mb-6">
@@ -173,7 +186,7 @@
                     </div>
                 </div>
 
-                <!-- Service Card 2 -->
+                <!-- Servicio 2 -->
                 <div class="service-card group relative bg-carddark rounded-2xl p-8 border border-neutral-800 hover:border-gold-500/50 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between" data-category="barba">
                     <div>
                         <div class="flex items-center justify-between mb-6">
@@ -195,7 +208,7 @@
                     </div>
                 </div>
 
-                <!-- Service Card 3 -->
+                <!-- Servicio 3 -->
                 <div class="service-card group relative bg-carddark rounded-2xl p-8 border border-neutral-800 hover:border-gold-500/50 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between" data-category="vip">
                     <div>
                         <div class="flex items-center justify-between mb-6">
@@ -217,7 +230,7 @@
                     </div>
                 </div>
 
-                <!-- Service Card 4 -->
+                <!-- Servicio 4 -->
                 <div class="service-card group relative bg-carddark rounded-2xl p-8 border border-neutral-800 hover:border-gold-500/50 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between" data-category="corte">
                     <div>
                         <div class="flex items-center justify-between mb-6">
@@ -239,7 +252,7 @@
                     </div>
                 </div>
 
-                <!-- Service Card 5 -->
+                <!-- Servicio 5 -->
                 <div class="service-card group relative bg-carddark rounded-2xl p-8 border border-neutral-800 hover:border-gold-500/50 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between" data-category="barba">
                     <div>
                         <div class="flex items-center justify-between mb-6">
@@ -261,7 +274,7 @@
                     </div>
                 </div>
 
-                <!-- Service Card 6 -->
+                <!-- Servicio 6 -->
                 <div class="service-card group relative bg-carddark rounded-2xl p-8 border border-neutral-800 hover:border-gold-500/50 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between" data-category="vip">
                     <div>
                         <div class="flex items-center justify-between mb-6">
@@ -286,7 +299,9 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
+    <!-- ====================================================================
+         4. SECCIÓN EXPERIENCIA Y GALERÍA
+         ==================================================================== -->
     <section id="experiencia" class="py-28 bg-darkbase border-t border-neutral-900 relative">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -330,7 +345,9 @@
         </div>
     </section>
 
-    <!-- Barbers Team Section -->
+    <!-- ====================================================================
+         5. EQUIPO DE MAESTROS BARBEROS
+         ==================================================================== -->
     <section id="equipo" class="py-28 bg-[#0c0c0c] border-t border-neutral-900">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -343,7 +360,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Barber 1 -->
+                <!-- Barbero 1 -->
                 <div class="group bg-carddark rounded-2xl overflow-hidden border border-neutral-800 hover:border-gold-500/40 transition-all duration-300">
                     <div class="relative h-80 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800" alt="Alexander Vance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -362,7 +379,7 @@
                     </div>
                 </div>
 
-                <!-- Barber 2 -->
+                <!-- Barbero 2 -->
                 <div class="group bg-carddark rounded-2xl overflow-hidden border border-neutral-800 hover:border-gold-500/40 transition-all duration-300">
                     <div class="relative h-80 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" alt="Matteo Rossi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -381,7 +398,7 @@
                     </div>
                 </div>
 
-                <!-- Barber 3 -->
+                <!-- Barbero 3 -->
                 <div class="group bg-carddark rounded-2xl overflow-hidden border border-neutral-800 hover:border-gold-500/40 transition-all duration-300">
                     <div class="relative h-80 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=800" alt="Julian Sterling" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -403,7 +420,9 @@
         </div>
     </section>
 
-    <!-- Booking Modal -->
+    <!-- ====================================================================
+         6. MODAL INTERACTIVO DE RESERVAS
+         ==================================================================== -->
     <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/80 backdrop-blur-md hidden">
         <div class="bg-carddark border border-gold-500/30 w-full max-w-lg rounded-3xl p-8 relative shadow-2xl animate-in fade-in zoom-in duration-300">
             <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-neutral-400 hover:text-white text-xl" aria-label="Cerrar modal">
@@ -464,7 +483,7 @@
         </div>
     </div>
 
-    <!-- Custom Notification Box -->
+    <!-- Notificación Flotante Toast -->
     <div id="notification-box" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-500 bg-carddark border border-gold-400 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center space-x-3">
         <div class="w-8 h-8 rounded-full bg-gold-500 text-black flex items-center justify-center font-bold">
             <i class="fa-solid fa-check text-sm"></i>
@@ -475,7 +494,9 @@
         </div>
     </div>
 
-    <!-- Footer Section -->
+    <!-- ====================================================================
+         7. PIE DE PÁGINA INSTITUCIONAL
+         ==================================================================== -->
     <footer id="contacto" class="bg-[#050505] border-t border-neutral-900 pt-20 pb-12">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div class="md:col-span-1 space-y-4">
@@ -529,7 +550,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript Logic -->
+    <!-- Lógica de Interacción Principal -->
     <script src="script.js"></script>
 </body>
 </html>

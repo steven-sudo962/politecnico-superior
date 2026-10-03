@@ -1,27 +1,51 @@
 /**
- * KRONOS Barbería + May AI Assistant - Interactive Logic
+ * ==========================================================================
+ * KRONOS BARBERÍA DE ALTA GAMA + MAY AI - INTERACTIVE ENGINE
+ * --------------------------------------------------------------------------
+ * Módulo JavaScript modular encargado de la interacción en tiempo real y
+ * del Asistente Virtual Multimodal May:
+ * - Menú responsive táctil y de escritorio.
+ * - Efecto dinámico de navegación al hacer scroll.
+ * - Sistema de filtrado interactivo por categorías de servicios.
+ * - Gestión modal de reservas con selección inteligente de servicio.
+ * - Asistente May: Reconocimiento de voz (STT), Síntesis de voz (TTS) y Chat.
+ * ==========================================================================
  */
 
+'use strict';
+
+/**
+ * Inicialización principal al cargar el DOM.
+ */
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu Toggle
+    initNavigation();
+    initBookingForm();
+    initMayAssistant();
+});
+
+/**
+ * Configura los eventos del menú de navegación y del scroll.
+ */
+function initNavigation() {
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+    const navbar = document.getElementById('navbar');
 
     if (menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            menuBtn.setAttribute('aria-expanded', (!isHidden).toString());
         });
 
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
             });
         });
     }
 
-    // Navbar Scroll Shadow Effect
-    const navbar = document.getElementById('navbar');
     if (navbar) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -31,20 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-    // Booking Form Submission Handler
-    const bookingForm = document.getElementById('booking-form');
-    if (bookingForm) {
-        bookingForm.addEventListener('submit', handleBookingSubmit);
-    }
-
-    // Initialize May Virtual Assistant
-    initMayAssistant();
-});
+}
 
 /**
- * Filter services grid by category
- * @param {string} category - Category slug ('all', 'corte', 'barba', 'vip')
+ * Filtra las tarjetas de servicios según la categoría seleccionada.
+ * @param {string} category - Categoría a mostrar ('all', 'corte', 'barba', 'vip').
  */
 function filterServices(category) {
     const cards = document.querySelectorAll('.service-card');
@@ -62,24 +77,22 @@ function filterServices(category) {
     }
 
     cards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-category') === category) {
-            card.style.display = 'flex';
-        } else {
-            card.style.display = 'none';
-        }
+        const matches = (category === 'all' || card.getAttribute('data-category') === category);
+        card.style.display = matches ? 'flex' : 'none';
     });
 }
 
 /**
- * Open Booking Modal and select relevant service if provided
- * @param {string} [serviceName='']
- * @param {string} [price='']
+ * Abre el modal interactivo de reservas y preselecciona un servicio.
+ * @param {string} [serviceName=''] - Nombre del servicio a preseleccionar.
+ * @param {string} [price=''] - Precio orientativo del servicio.
  */
 function openBookingModal(serviceName = '', price = '') {
     const modal = document.getElementById('booking-modal');
     if (!modal) return;
 
     modal.classList.remove('hidden');
+
     if (serviceName) {
         const select = document.getElementById('modal-service');
         if (select) {
@@ -95,7 +108,7 @@ function openBookingModal(serviceName = '', price = '') {
 }
 
 /**
- * Close Booking Modal
+ * Cierra el modal de reservas.
  */
 function closeBookingModal() {
     const modal = document.getElementById('booking-modal');
@@ -105,8 +118,18 @@ function closeBookingModal() {
 }
 
 /**
- * Handle booking form submission
- * @param {Event} event
+ * Configura la validación y el envío del formulario de reservas.
+ */
+function initBookingForm() {
+    const bookingForm = document.getElementById('booking-form');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', handleBookingSubmit);
+    }
+}
+
+/**
+ * Maneja el evento submit del formulario de reserva con notificación flotante.
+ * @param {Event} event - Evento de envío del formulario.
  */
 function handleBookingSubmit(event) {
     event.preventDefault();
@@ -123,7 +146,7 @@ function handleBookingSubmit(event) {
 }
 
 /* ==========================================================================
-   May Virtual Assistant Implementation
+   MAY VIRTUAL ASSISTANT ENGINE (STT + TTS + DEMO/BACKEND NLP)
    ========================================================================== */
 
 const MAY_BACKEND_URL = '/api/may';
@@ -135,6 +158,9 @@ let recognition = null;
 let listening = false;
 let cachedVoices = [];
 
+/**
+ * Inicializa la interfaz y controladores de eventos del asistente May.
+ */
 function initMayAssistant() {
     mayPanel = document.getElementById('may-panel');
     mayMessages = document.getElementById('may-messages');
@@ -161,6 +187,9 @@ function initMayAssistant() {
     initSpeechSynthesis();
 }
 
+/**
+ * Muestra u oculta el panel flotante de May y emite la bienvenida la primera vez.
+ */
 function toggleMayPanel() {
     if (!mayPanel) return;
     mayPanel.classList.toggle('hidden');
@@ -172,6 +201,11 @@ function toggleMayPanel() {
     }
 }
 
+/**
+ * Añade una burbuja de chat a la conversación.
+ * @param {'user'|'ai'} sender - Emisor del mensaje.
+ * @param {string} text - Contenido del mensaje.
+ */
 function addMayMessage(sender, text) {
     if (!mayMessages) return;
     const bubble = document.createElement('div');
@@ -181,6 +215,10 @@ function addMayMessage(sender, text) {
     mayMessages.scrollTop = mayMessages.scrollHeight;
 }
 
+/**
+ * Procesa el mensaje del usuario y obtiene la respuesta de May.
+ * @param {string} text - Texto enviado por el usuario.
+ */
 async function handleUserMessage(text) {
     addMayMessage('user', text);
     if (mayStatus) mayStatus.textContent = 'Escribiendo...';
@@ -192,6 +230,11 @@ async function handleUserMessage(text) {
     speakAsMay(reply);
 }
 
+/**
+ * Consulta la respuesta de May mediante el modo Demo o llamando a la API backend.
+ * @param {string} text - Consulta del usuario.
+ * @returns {Promise<string>} Respuesta procesada.
+ */
 async function askMay(text) {
     if (MAY_DEMO_MODE) {
         return getDemoReply(text);
@@ -211,6 +254,11 @@ async function askMay(text) {
     }
 }
 
+/**
+ * Genera respuestas inteligentes demostrativas basadas en palabras clave.
+ * @param {string} text - Texto del usuario.
+ * @returns {string} Respuesta generada.
+ */
 function getDemoReply(text) {
     const lower = text.toLowerCase();
     if (lower.includes('horario')) {
@@ -225,10 +273,12 @@ function getDemoReply(text) {
     if (lower.includes('ubicaci') || lower.includes('dirección') || lower.includes('dónde')) {
         return 'Estamos en la Av. Diagonal de los Caballeros #452, Distrito Financiero. ¿Le gustaría que le comparta el enlace de ubicación?';
     }
-    return `(Modo demo, sin servidor conectado) Recibí: "${text}". Cuando conectemos el backend con Gemini, responderé con inteligencia real.`;
+    return `(Modo demo) Recibí: "${text}". Conectado a nuestro servidor con Gemini, responderé con inteligencia contextual avanzada.`;
 }
 
-/* --- Speech Recognition --- */
+/* --------------------------------------------------------------------------
+   RECONOCIMIENTO DE VOZ (Speech-to-Text NATIVO)
+   -------------------------------------------------------------------------- */
 function initSpeechRecognition() {
     const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (SpeechRecognitionAPI) {
@@ -275,7 +325,9 @@ function toggleMicListening() {
     }
 }
 
-/* --- Speech Synthesis --- */
+/* --------------------------------------------------------------------------
+   SÍNTESIS DE VOZ (Text-to-Speech NATIVO)
+   -------------------------------------------------------------------------- */
 function loadVoices() {
     if ('speechSynthesis' in window) {
         cachedVoices = window.speechSynthesis.getVoices();

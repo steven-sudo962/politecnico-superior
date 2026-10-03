@@ -1,28 +1,43 @@
 /* ==========================================================================
-   KRONOS Barbería - Stylesheet
+   KRONOS BARBERÍA DE ALTA GAMA - STYLESHEET
+   --------------------------------------------------------------------------
+   Arquitectura CSS personalizada que complementa a Tailwind CSS.
+   Incluye fuentes, scrollbars, componentes con efecto glassmorphism y
+   gradientes dorados optimizados para la experiencia de usuario.
    ========================================================================== */
 
-/* Base Typography and Colors */
+/* --------------------------------------------------------------------------
+   1. BASE TYPOGRAPHY & BODY CONFIGURATION
+   -------------------------------------------------------------------------- */
 body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: #0a0a0a;
     color: #e5e5e5;
     overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, .font-serif {
-    font-family: 'Playfair Display', serif;
+h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.02em;
 }
 
-/* Glassmorphism Navigation */
+/* --------------------------------------------------------------------------
+   2. GLASSMORPHISM NAVIGATION BAR
+   -------------------------------------------------------------------------- */
 .glass-nav {
     background: rgba(10, 10, 10, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(212, 155, 16, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Gold Gradient Utilities */
+/* --------------------------------------------------------------------------
+   3. GOLD BRANDING GRADIENTS & BORDERS
+   -------------------------------------------------------------------------- */
 .gold-gradient-text {
     background: linear-gradient(135deg, #f4d88a 0%, #eab019 50%, #b07a0c 100%);
     -webkit-background-clip: text;
@@ -32,13 +47,16 @@ h1, h2, h3, .font-serif {
 
 .gold-border {
     border-color: rgba(234, 176, 25, 0.3);
+    transition: border-color 0.3s ease;
 }
 
 .gold-border:hover {
     border-color: rgba(234, 176, 25, 0.8);
 }
 
-/* Custom Scrollbar */
+/* --------------------------------------------------------------------------
+   4. CUSTOM ACCESSIBLE SCROLLBAR
+   -------------------------------------------------------------------------- */
 ::-webkit-scrollbar {
     width: 8px;
 }
