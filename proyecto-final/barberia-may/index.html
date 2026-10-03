@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <!-- Metadata Principal -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KRONOS Barbería de Alta Gama con Asistente Virtual May - Experiencia exclusiva e intelingencia artificial para agendamiento.">
+    <title>KRONOS | Barbería de Alta Gama + May AI</title>
+
+    <!-- Tailwind CSS Framework CDN & Configuración -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind-config.js"></script>
+
+    <!-- Fuentes Tipográficas Oficiales (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Iconografía FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Hoja de Estilos Personalizada -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-darkbase text-neutral-200 antialiased selection:bg-gold-500 selection:text-black">
+
+    <!-- ====================================================================
+         1. NAVEGACIÓN PRINCIPAL
+         ==================================================================== -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logotipo Institucional -->
+            <a href="#" class="flex items-center space-x-3 group" aria-label="KRONOS Barbería Inicio">
+                <div class="w-10 h-10 rounded-full border border-gold-400 flex items-center justify-center bg-gold-500/10 text-gold-400 group-hover:bg-gold-500 group-hover:text-black transition-all duration-300">
+                    <i class="fa-solid fa-scissors text-lg"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-bold tracking-widest text-white font-serif">KRONOS</span>
+                    <span class="text-[10px] tracking-[0.3em] text-gold-400 uppercase font-semibold">Barbería & Gentleman</span>
+                </div>
+            </a>
+
+            <!-- Menú de Navegación para Escritorio -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wider uppercase text-neutral-300">
+                <a href="#inicio" class="hover:text-gold-400 transition-colors">Inicio</a>
+                <a href="#servicios" class="hover:text-gold-400 transition-colors">Servicios</a>
+                <a href="#experiencia" class="hover:text-gold-400 transition-colors">La Experiencia</a>
+                <a href="#equipo" class="hover:text-gold-400 transition-colors">Maestros</a>
+                <a href="#contacto" class="hover:text-gold-400 transition-colors">Ubicación</a>
+            </nav>
+
+            <!-- Botón de Acción Directa -->
+            <div class="hidden md:flex items-center space-x-4">
+                <button onclick="openBookingModal()" class="relative group overflow-hidden px-6 py-3 rounded-full border border-gold-400 text-gold-400 font-semibold text-xs uppercase tracking-widest transition-all duration-300 hover:text-black">
+                    <span class="absolute inset-0 w-full h-full bg-gold-400 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+                    <span class="relative z-10">Reservar Cita</span>
+                </button>
+            </div>
+
+            <!-- Botón de Menú Responsive (Móvil) -->
+            <button id="menu-btn" class="md:hidden text-gold-400 focus:outline-none text-2xl p-2" aria-label="Abrir menú" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-carddark border-b border-gold-500/20 px-6 py-6 space-y-4">
+            <a href="#inicio" class="block text-sm uppercase tracking-wider text-neutral-300 hover:text-gold-400 py-1">Inicio</a>
+            <a href="#servicios" class="block text-sm uppercase tracking-wider text-neutral-300 hover:text-gold-400 py-1">Servicios</a>
+            <a href="#experiencia" class="block text-sm uppercase tracking-wider text-neutral-300 hover:text-gold-400 py-1">La Experiencia</a>
+            <a href="#equipo" class="block text-sm uppercase tracking-wider text-neutral-300 hover:text-gold-400 py-1">Maestros</a>
+            <a href="#contacto" class="block text-sm uppercase tracking-wider text-neutral-300 hover:text-gold-400 py-1">Ubicación</a>
+            <div class="pt-4">
+                <button onclick="openBookingModal()" class="w-full py-3 rounded-full bg-gold-500 text-black font-semibold text-xs uppercase tracking-widest shadow-lg shadow-gold-500/20">
+                    Reservar Cita
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ====================================================================
+         2. SECCIÓN HERO / PORTADA
+         ==================================================================== -->
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Fondo Multimedia Cinematográfico -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1920" alt="Atmósfera de Barbería" class="w-full h-full object-cover object-center filter brightness-[0.35] scale-105 animate-pulse duration-[10000ms]">
+            <div class="absolute inset-0 bg-gradient-to-t from-darkbase via-darkbase/60 to-transparent"></div>
+            <div class="absolute inset-0 bg-radial-gradient from-transparent via-darkbase/80 to-darkbase"></div>
+        </div>
+
+        <!-- Mensaje Principal y Botones de Conversión -->
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center py-20">
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs uppercase tracking-[0.25em] mb-6 backdrop-blur-sm">
+                <i class="fa-regular fa-gem"></i>
+                <span>Tradición & Estilo Exclusivo</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-serif tracking-tight text-white mb-6 leading-[1.1]">
+                El Arte de la <br>
+                <span class="gold-gradient-text italic">Barbería Clásica</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-base sm:text-lg text-neutral-400 font-light mb-10 leading-relaxed">
+                Un santuario dedicado al cuidado masculino de alta gama. Donde la vieja escuela se fusiona con la sofisticación contemporánea.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gold-500 hover:bg-gold-400 text-black font-bold text-xs uppercase tracking-[0.2em] shadow-xl shadow-gold-500/20 transition-all duration-300 transform hover:-translate-y-0.5">
+                    Reservar tu Experiencia
+                </button>
+                <a href="#servicios" class="w-full sm:w-auto px-8 py-4 rounded-full border border-neutral-700 hover:border-gold-400 text-white hover:text-gold-400 font-semibold text-xs uppercase tracking-[0.2em] transition-all duration-300 backdrop-blur-sm">
+                    Ver Servicios
+                </a>
+            </div>
+
+            <!-- Métricas de Impacto -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-20 pt-12 border-t border-neutral-800/80 max-w-3xl mx-auto text-left">
+                <div class="p-4 rounded-xl bg-carddark/50 border border-neutral-800 backdrop-blur-sm">
+                    <p class="text-3xl sm:text-4xl font-bold font-serif text-gold-400">15+</p>
+                    <p class="text-xs text-neutral-400 uppercase tracking-widest mt-1">Años de Maestría</p>
+                </div>
+                <div class="p-4 rounded-xl bg-carddark/50 border border-neutral-800 backdrop-blur-sm">
+                    <p class="text-3xl sm:text-4xl font-bold font-serif text-gold-400">100%</p>
+                    <p class="text-xs text-neutral-400 uppercase tracking-widest mt-1">Productos Premium</p>
+                </div>
+                <div class="col-span-2 md:col-span-1 p-4 rounded-xl bg-carddark/50 border border-neutral-800 backdrop-blur-sm">
+                    <p class="text-3xl sm:text-4xl font-bold font-serif text-gold-400">4.9★</p>
+                    <p class="text-xs text-neutral-400 uppercase tracking-widest mt-1">Excelencia VIP</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================
+         3. SECCIÓN DE SERVICIOS Y CATÁLOGO
+         ==================================================================== -->
+    <section id="servicios" class="py-28 relative bg-gradient-to-b from-darkbase via-[#0f0f0f] to-darkbase">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold block mb-3">Nuestra Carta de Servicios</span>
+                <h2 class="text-3xl sm:text-5xl font-bold font-serif text-white mb-6">Diseñado para el Caballero Actual</h2>
+                <div class="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
+                <p class="text-neutral-400 text-sm sm:text-base font-light">
+                    Cada servicio incluye ritual de toalla caliente, aromaterapia y asesoría de imagen personalizada con bebidas de cortesía.
+                </p>
+
+                <!-- Filtros Interactivos por Categoria -->
+                <div class="flex flex-wrap justify-center gap-3 mt-10">
+                    <button onclick="filterServices('all')" id="btn-all" class="service-filter-btn px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 bg-gold-500 text-black shadow-md">
+                        Todos
+                    </button>
+                    <button onclick="filterServices('corte')" id="btn-corte" class="service-filter-btn px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 bg-carddark text-neutral-400 hover:text-white border border-neutral-800">
+                        Cortes & Estilo
+                    </button>
+                    <button onclick="filterServices('barba')" id="btn-barba" class="service-filter-btn px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 bg-carddark text-neutral-400 hover:text-white border border-neutral-800">
+                        Barba & Afeitado
+                    </button>
+                    <button onclick="filterServices('vip')" id="btn-vip" class="service-filter-btn px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 bg-carddark text-neutral-400 hover:text-white border border-neutral-800">
+                        Combos VIP
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grilla Dinámica de Servicios -->
+            <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Servicio 1 -->
+                <div class="service-card group relative bg-carddark rounded-2xl p-8 border border-neutral-800 hover:border-gold-500/50 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between" data-category="corte">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 group-hover:bg-gold-500 group-hover:text-black transition-colors">
+                                <i class="fa-solid fa-scissors text-lg"></i>
+                            </div>
+                            <span class="text-2xl font-bold font-serif text-gold-400">$35</span>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-white mb-3 group-hover:text-gold-400 transition-colors">Corte Kronos Signature</h3>
+                        <p class="text-neutral-400 text-sm font-light mb-6 leading-relaxed">
+                            Corte de cabello personalizado adaptado a tu estructura facial, asesoría, lavado revitalizante, peinado y acabado con productos de alta gama.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-400">
+                        <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-gold-400"></i> 45 min</span>
+                        <button onclick="openBookingModal('Corte Kronos Signature', '$35')" class="text-gold-400 hover:text-white font-semibold uppercase tracking-wider flex items-center gap-1 transition-colors">
+                            Reservar <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="service-card group relative bg-carddark rounded-2xl p-8 border border-neutral-800 hover:border-gold-500/50 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between" data-category="barba">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 group-hover:bg-gold-500 group-hover:text-black transition-colors">
+                                <i class="fa-solid fa-user-tie text-lg"></i>
+                            </div>
+                            <span class="text-2xl font-bold font-serif text-gold-400">$28</span>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-white mb-3 group-hover:text-gold-400 transition-colors">Afeitado Tradicional Hot Towel</h3>
+                        <p class="text-neutral-400 text-sm font-light mb-6 leading-relaxed">
+                            Ritual clásico con toallas calientes, aceites pre-afeitado orgánicos, navaja libre de alta precisión y bálsamo calmante de menta y eucalipto.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-400">
+                        <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-gold-400"></i> 35 min</span>
+                        <button onclick="openBookingModal('Afeitado Tradicional Hot Towel', '$28')" class="text-gold-400 hover:text-white font-semibold uppercase tracking-wider flex items-center gap-1 transition-colors">
+                            Reservar <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="service-card group relative bg-carddark rounded-2xl p-8 border border-neutral-800 hover:border-gold-500/50 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between" data-category="vip">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 group-hover:bg-gold-500 group-hover:text-black transition-colors">
+                                <i class="fa-solid fa-crown text-lg"></i>
+                            </div>
+                            <span class="text-2xl font-bold font-serif text-gold-400">$60</span>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-white mb-3 group-hover:text-gold-400 transition-colors">The Gentleman VIP Experience</h3>
+                        <p class="text-neutral-400 text-sm font-light mb-6 leading-relaxed">
+                            El combo definitivo: Corte Kronos, diseño completo de barba con toalla caliente, mascarilla facial carbonatada y bebida artesanal de cortesía.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-400">
+                        <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-gold-400"></i> 75 min</span>
+                        <button onclick="openBookingModal('The Gentleman VIP Experience', '$60')" class="text-gold-400 hover:text-white font-semibold uppercase tracking-wider flex items-center gap-1 transition-colors">
+                            Reservar <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Servicio 4 -->
+                <div class="service-card group relative bg-carddark rounded-2xl p-8 border border-neutral-800 hover:border-gold-500/50 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between" data-category="corte">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 group-hover:bg-gold-500 group-hover:text-black transition-colors">
+                                <i class="fa-solid fa-child-reaching text-lg"></i>
+                            </div>
+                            <span class="text-2xl font-bold font-serif text-gold-400">$25</span>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-white mb-3 group-hover:text-gold-400 transition-colors">Junior Gentleman (Menores de 12)</h3>
+                        <p class="text-neutral-400 text-sm font-light mb-6 leading-relaxed">
+                            Corte estilizado para los pequeños caballeros con paciencia, técnica moderna y acabado impecable adaptado a su estilo.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-400">
+                        <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-gold-400"></i> 30 min</span>
+                        <button onclick="openBookingModal('Junior Gentleman', '$25')" class="text-gold-400 hover:text-white font-semibold uppercase tracking-wider flex items-center gap-1 transition-colors">
+                            Reservar <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Servicio 5 -->
+                <div class="service-card group relative bg-carddark rounded-2xl p-8 border border-neutral-800 hover:border-gold-500/50 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between" data-category="barba">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 group-hover:bg-gold-500 group-hover:text-black transition-colors">
+                                <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+                            </div>
+                            <span class="text-2xl font-bold font-serif text-gold-400">$22</span>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-white mb-3 group-hover:text-gold-400 transition-colors">Perfilado & Mantenimiento de Barba</h3>
+                        <p class="text-neutral-400 text-sm font-light mb-6 leading-relaxed">
+                            Arreglo detallado de contornos con máquina y navaja, recorte con tijera para eliminar puntas rebeldes y aplicación de aceite nutritivo.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-400">
+                        <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-gold-400"></i> 30 min</span>
+                        <button onclick="openBookingModal('Perfilado de Barba', '$22')" class="text-gold-400 hover:text-white font-semibold uppercase tracking-wider flex items-center gap-1 transition-colors">
+                            Reservar <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Servicio 6 -->
+                <div class="service-card group relative bg-carddark rounded-2xl p-8 border border-neutral-800 hover:border-gold-500/50 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between" data-category="vip">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 group-hover:bg-gold-500 group-hover:text-black transition-colors">
+                                <i class="fa-solid fa-spa text-lg"></i>
+                            </div>
+                            <span class="text-2xl font-bold font-serif text-gold-400">$45</span>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-white mb-3 group-hover:text-gold-400 transition-colors">Tratamiento Facial Detox</h3>
+                        <p class="text-neutral-400 text-sm font-light mb-6 leading-relaxed">
+                            Exfoliación profunda, mascarilla negra purificante de carbón activado, vapor de ozono y masaje facial relajante anti-estrés.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-400">
+                        <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-gold-400"></i> 40 min</span>
+                        <button onclick="openBookingModal('Tratamiento Facial Detox', '$45')" class="text-gold-400 hover:text-white font-semibold uppercase tracking-wider flex items-center gap-1 transition-colors">
+                            Reservar <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================
+         4. SECCIÓN EXPERIENCIA Y GALERÍA
+         ==================================================================== -->
+    <section id="experiencia" class="py-28 bg-darkbase border-t border-neutral-900 relative">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold block mb-3">Atmósfera Exclusiva</span>
+                <h2 class="text-3xl sm:text-5xl font-bold font-serif text-white mb-6 leading-tight">Más que un corte, un ritual para caballeros</h2>
+                <p class="text-neutral-400 text-base font-light mb-8 leading-relaxed">
+                    En KRONOS hemos diseñado cada rincón para transportarte a la época dorada de las barberías clásicas con un toque vanguardista. Disfruta de un ambiente privado, música de vinilo en directo, una barra de tragos de cortesía y la atención de maestros barberos certificados internacionalmente.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0 mt-1">
+                            <i class="fa-solid fa-glass-water"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold mb-1">Bar & Lounge</h4>
+                            <p class="text-xs text-neutral-400">Whisky escocés, espresso de grano y cócteles artesanales incluidos.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0 mt-1">
+                            <i class="fa-solid fa-couch"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold mb-1">Sillones de Época</h4>
+                            <p class="text-xs text-neutral-400">Confort absoluto en auténticos sillones reclinables de cuero chesterfield.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative grid grid-cols-2 gap-4">
+                <div class="space-y-4">
+                    <img src="https://images.unsplash.com/photo-1512838243191-e81e8f66f6fd?auto=format&fit=crop&q=80&w=800" alt="Detalle Barbería" class="rounded-2xl object-cover h-64 w-full border border-neutral-800">
+                    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&q=80&w=800" alt="Cuidado de barba" class="rounded-2xl object-cover h-48 w-full border border-neutral-800">
+                </div>
+                <div class="space-y-4 pt-8">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=800" alt="Barbero realizando corte" class="rounded-2xl object-cover h-48 w-full border border-neutral-800">
+                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=800" alt="Productos de peinado" class="rounded-2xl object-cover h-64 w-full border border-neutral-800">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================
+         5. EQUIPO DE MAESTROS BARBEROS
+         ==================================================================== -->
+    <section id="equipo" class="py-28 bg-[#0c0c0c] border-t border-neutral-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold block mb-3">Maestros Tijera</span>
+                <h2 class="text-3xl sm:text-5xl font-bold font-serif text-white mb-6">Nuestro Equipo de Expertos</h2>
+                <div class="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
+                <p class="text-neutral-400 text-sm sm:text-base font-light">
+                    Profesionales apasionados con años de experiencia internacional dedicados a perfeccionar tu imagen.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Barbero 1 -->
+                <div class="group bg-carddark rounded-2xl overflow-hidden border border-neutral-800 hover:border-gold-500/40 transition-all duration-300">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800" alt="Alexander Vance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-carddark via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 text-center -mt-12 relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-gold-500 text-black font-bold font-serif text-xl flex items-center justify-center mx-auto mb-4 shadow-xl border-4 border-carddark">
+                            AV
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-white">Alexander Vance</h3>
+                        <p class="text-xs text-gold-400 uppercase tracking-widest mt-1 mb-4">Master Barber & Fundador</p>
+                        <p class="text-neutral-400 text-xs font-light mb-6">Especialista en cortes clásicos europeos y barbas escultóricas con 14 años de trayectoria.</p>
+                        <button onclick="openBookingModal('Cualquiera con Alexander Vance')" class="w-full py-2.5 rounded-full border border-gold-400/50 hover:bg-gold-500 hover:text-black hover:border-gold-500 text-gold-400 text-xs uppercase tracking-widest transition-all duration-300">
+                            Reservar con Alexander
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Barbero 2 -->
+                <div class="group bg-carddark rounded-2xl overflow-hidden border border-neutral-800 hover:border-gold-500/40 transition-all duration-300">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" alt="Matteo Rossi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-carddark via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 text-center -mt-12 relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-gold-500 text-black font-bold font-serif text-xl flex items-center justify-center mx-auto mb-4 shadow-xl border-4 border-carddark">
+                            MR
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-white">Matteo Rossi</h3>
+                        <p class="text-xs text-gold-400 uppercase tracking-widest mt-1 mb-4">Fade Specialist & Styling</p>
+                        <p class="text-neutral-400 text-xs font-light mb-6">Experto en desvanecidos milimétricos, texturizados modernos y tendencias urbanas vanguardistas.</p>
+                        <button onclick="openBookingModal('Cualquiera con Matteo Rossi')" class="w-full py-2.5 rounded-full border border-gold-400/50 hover:bg-gold-500 hover:text-black hover:border-gold-500 text-gold-400 text-xs uppercase tracking-widest transition-all duration-300">
+                            Reservar con Matteo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Barbero 3 -->
+                <div class="group bg-carddark rounded-2xl overflow-hidden border border-neutral-800 hover:border-gold-500/40 transition-all duration-300">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=800" alt="Julian Sterling" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-carddark via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 text-center -mt-12 relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-gold-500 text-black font-bold font-serif text-xl flex items-center justify-center mx-auto mb-4 shadow-xl border-4 border-carddark">
+                            JS
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-white">Julian Sterling</h3>
+                        <p class="text-xs text-gold-400 uppercase tracking-widest mt-1 mb-4">Afeitado & Rituales Hot Towel</p>
+                        <p class="text-neutral-400 text-xs font-light mb-6">Maestro en afeitados tradicionales con navaja libre y tratamientos faciales de relajación profunda.</p>
+                        <button onclick="openBookingModal('Cualquiera con Julian Sterling')" class="w-full py-2.5 rounded-full border border-gold-400/50 hover:bg-gold-500 hover:text-black hover:border-gold-500 text-gold-400 text-xs uppercase tracking-widest transition-all duration-300">
+                            Reservar con Julian
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================
+         6. MODAL INTERACTIVO DE RESERVAS
+         ==================================================================== -->
+    <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/80 backdrop-blur-md hidden">
+        <div class="bg-carddark border border-gold-500/30 w-full max-w-lg rounded-3xl p-8 relative shadow-2xl animate-in fade-in zoom-in duration-300">
+            <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-neutral-400 hover:text-white text-xl" aria-label="Cerrar modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-8">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold block mb-2">Reserva Interactiva</span>
+                <h3 class="text-2xl font-bold font-serif text-white">Agenda tu Cita</h3>
+                <p class="text-xs text-neutral-400 mt-1">Selecciona tus preferencias para apartar tu espacio en Kronos.</p>
+            </div>
+
+            <form id="booking-form" class="space-y-4">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-neutral-300 mb-2">Nombre Completo</label>
+                    <input type="text" required placeholder="Ej. Carlos Mendoza" class="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-800 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-neutral-300 mb-2">Teléfono / WhatsApp</label>
+                        <input type="tel" required placeholder="+34 600 000 000" class="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-800 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-neutral-300 mb-2">Servicio</label>
+                        <select id="modal-service" class="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-800 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                            <option>Corte Kronos Signature ($35)</option>
+                            <option>Afeitado Tradicional Hot Towel ($28)</option>
+                            <option>The Gentleman VIP Experience ($60)</option>
+                            <option>Junior Gentleman ($25)</option>
+                            <option>Perfilado de Barba ($22)</option>
+                            <option>Tratamiento Facial Detox ($45)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-neutral-300 mb-2">Fecha</label>
+                        <input type="date" required class="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-800 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-neutral-300 mb-2">Hora Preferida</label>
+                        <select class="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-800 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                            <option>10:00 AM</option>
+                            <option>11:30 AM</option>
+                            <option>01:00 PM</option>
+                            <option>04:00 PM</option>
+                            <option>06:30 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full mt-6 py-4 rounded-xl bg-gold-500 hover:bg-gold-400 text-black font-bold text-xs uppercase tracking-[0.2em] shadow-lg shadow-gold-500/20 transition-all duration-300">
+                    Confirmar Reserva
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notificación Flotante Toast -->
+    <div id="notification-box" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-500 bg-carddark border border-gold-400 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-full bg-gold-500 text-black flex items-center justify-center font-bold">
+            <i class="fa-solid fa-check text-sm"></i>
+        </div>
+        <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-gold-400">¡Reserva Registrada!</h4>
+            <p id="notification-text" class="text-xs text-neutral-300">Te hemos enviado los detalles de tu cita con éxito.</p>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+         7. MAY: ASISTENTE VIRTUAL INTELIGENTE MULTIMODAL
+         ==================================================================== -->
+    <button id="may-toggle-btn" onclick="toggleMayPanel()" class="fixed bottom-6 left-6 z-50 w-16 h-16 rounded-full bg-gold-500 hover:bg-gold-400 text-black shadow-lg shadow-gold-500/30 flex items-center justify-center text-2xl transition-all duration-300" aria-label="Abrir asistente virtual May">
+        <i class="fa-solid fa-comment-dots"></i>
+    </button>
+
+    <div id="may-panel" class="hidden fixed bottom-24 left-6 z-50 w-[92vw] max-w-sm h-[28rem] bg-carddark border gold-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+        <!-- Encabezado del Asistente -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-neutral-800 bg-[#0d0d0d]">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded-full bg-gold-500/10 border border-gold-400 text-gold-400 flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-scissors"></i>
+                </div>
+                <div>
+                    <p class="text-white text-xs font-bold uppercase tracking-wider">May</p>
+                    <p id="may-status" class="text-[10px] text-neutral-500">Asistente de KRONOS</p>
+                </div>
+            </div>
+            <button onclick="toggleMayPanel()" class="text-neutral-400 hover:text-gold-400 text-sm" aria-label="Cerrar asistente May">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Área de Conversación/Mensajes -->
+        <div id="may-messages" class="flex-1 overflow-y-auto px-4 py-3 space-y-3 text-sm"></div>
+
+        <!-- Input Multimodal (Voz y Texto) -->
+        <form id="may-form" class="flex items-center gap-2 border-t border-neutral-800 p-3 bg-[#0d0d0d]">
+            <button type="button" id="may-mic-btn" title="Hablar" class="w-10 h-10 shrink-0 rounded-full border border-neutral-700 text-neutral-300 hover:border-gold-400 hover:text-gold-400 flex items-center justify-center transition-colors" aria-label="Usar micrófono">
+                <i class="fa-solid fa-microphone"></i>
+            </button>
+            <input id="may-input" type="text" autocomplete="off" placeholder="Escribe o pulsa el micrófono..." class="flex-1 bg-carddark border border-neutral-800 text-xs px-4 py-3 rounded-full text-white focus:outline-none focus:border-gold-400">
+            <button type="submit" class="w-10 h-10 shrink-0 rounded-full bg-gold-500 hover:bg-gold-400 text-black flex items-center justify-center" aria-label="Enviar mensaje">
+                <i class="fa-solid fa-paper-plane text-xs"></i>
+            </button>
+        </form>
+    </div>
+
+    <!-- ====================================================================
+         8. PIE DE PÁGINA INSTITUCIONAL
+         ==================================================================== -->
+    <footer id="contacto" class="bg-[#050505] border-t border-neutral-900 pt-20 pb-12">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="md:col-span-1 space-y-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full border border-gold-400 flex items-center justify-center bg-gold-500/10 text-gold-400">
+                        <i class="fa-solid fa-scissors"></i>
+                    </div>
+                    <span class="text-2xl font-bold tracking-widest text-white font-serif">KRONOS</span>
+                </div>
+                <p class="text-xs text-neutral-400 leading-relaxed font-light">
+                    Elevando el concepto de barbería tradicional hacia una experiencia de lujo y exclusividad total para el hombre contemporáneo.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-white text-xs font-semibold uppercase tracking-[0.2em] mb-4">Horarios</h4>
+                <ul class="space-y-2 text-xs text-neutral-400">
+                    <li class="flex justify-between"><span>Lunes - Viernes:</span> <span class="text-gold-400">09:00 - 20:00</span></li>
+                    <li class="flex justify-between"><span>Sábados:</span> <span class="text-gold-400">10:00 - 19:00</span></li>
+                    <li class="flex justify-between"><span>Domingos:</span> <span class="text-neutral-500">Cerrado</span></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white text-xs font-semibold uppercase tracking-[0.2em] mb-4">Ubicación</h4>
+                <p class="text-xs text-neutral-400 leading-relaxed mb-2">
+                    Av. Diagonal de los Caballeros #452, Distrito Financiero, Ciudad.
+                </p>
+                <p class="text-xs text-gold-400">+34 900 888 222</p>
+            </div>
+
+            <div>
+                <h4 class="text-white text-xs font-semibold uppercase tracking-[0.2em] mb-4">Newsletter</h4>
+                <p class="text-xs text-neutral-400 mb-4">Suscríbete para recibir consejos de estilo y accesos a eventos privados.</p>
+                <div class="flex items-center">
+                    <input type="email" placeholder="Tu correo electrónico" class="bg-carddark border border-neutral-800 text-xs px-4 py-3 rounded-l-xl text-white focus:outline-none focus:border-gold-400 w-full">
+                    <button class="bg-gold-500 text-black px-4 py-3 rounded-r-xl font-bold text-xs uppercase hover:bg-gold-400 transition-colors" aria-label="Suscribirse">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500">
+            <p>&copy; 2026 KRONOS Barbería de Alta Gama. Proyecto Universitario.</p>
+            <div class="flex space-x-6 mt-4 sm:mt-0">
+                <a href="#" class="hover:text-gold-400 transition-colors" aria-label="Instagram"><i class="fa-brands fa-instagram text-base"></i></a>
+                <a href="#" class="hover:text-gold-400 transition-colors" aria-label="Facebook"><i class="fa-brands fa-facebook text-base"></i></a>
+                <a href="#" class="hover:text-gold-400 transition-colors" aria-label="Twitter"><i class="fa-brands fa-twitter text-base"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lógica de Interacción y Asistente May -->
+    <script src="script.js"></script>
+</body>
+</html>
