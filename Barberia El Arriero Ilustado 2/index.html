@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Seguridad: la política CSP solo permite recursos propios y las fuentes de Google -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Barbería El Arriero Ilustrado: cortes clásicos, barba y afeitado tradicional.">
+  <title>Barbería El Arriero Ilustrado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;800&family=Work+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <!-- ENCABEZADO: logo y navegación -->
+  <header class="encabezado">
+    <div class="contenedor barra">
+      <a class="logo" href="#inicio" aria-label="Barbería El Arriero Ilustrado, inicio">
+        <span class="logo-marca" aria-hidden="true">A·I</span>
+        <span>El Arriero Ilustrado</span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menú</button>
+      <nav id="menu" class="menu" aria-label="Principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto" class="menu-cta">Reservar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- PORTADA -->
+    <section class="portada" id="inicio">
+      <div class="contenedor">
+        <p class="portada-sub">Barbería clásica</p>
+        <h1>Corte de oficio,<br>trato de caballeros.</h1>
+        <p class="portada-texto">Navaja, tijera y paciencia. Reserva tu turno y sal con el estilo que mereces.</p>
+        <a class="boton" href="#contacto">Reservar turno</a>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="seccion" id="servicios">
+      <div class="contenedor">
+        <h2>Servicios</h2>
+        <ul class="servicios">
+          <li><h3>Corte clásico</h3><p>Tijera y máquina, acabado con navaja.</p><strong>$25.000</strong></li>
+          <li><h3>Arreglo de barba</h3><p>Perfilado, toalla caliente y aceite.</p><strong>$20.000</strong></li>
+          <li><h3>Afeitado tradicional</h3><p>Navaja recta y espuma artesanal.</p><strong>$30.000</strong></li>
+          <li><h3>Combo completo</h3><p>Corte y barba en una sola sesión.</p><strong>$40.000</strong></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- GALERÍA: cada foto es un botón para que también se abra con teclado -->
+    <section class="seccion seccion-oscura" id="galeria">
+      <div class="contenedor">
+        <h2>Galería</h2>
+        <ul class="galeria">
+          <li><button type="button" class="foto" aria-label="Ampliar foto: Afeitado con navaja">
+            <img src="afeitado.jpg" alt="Afeitado con navaja" width="400" height="500" loading="lazy"><span>Afeitado</span></button></li>
+          <li><button type="button" class="foto" aria-label="Ampliar foto: Barba perfilada">
+            <img src="barba perfilada.jpg" alt="Barba perfilada con degradado lateral" width="400" height="500" loading="lazy"><span>Barba perfilada</span></button></li>
+          <li><button type="button" class="foto" aria-label="Ampliar foto: Corte clásico">
+            <img src="corte clasico.jpg" alt="Corte clásico con tijera y máquina" width="400" height="500" loading="lazy"><span>Corte clásico</span></button></li>
+          <li><button type="button" class="foto" aria-label="Ampliar foto: Degradado con diseño">
+            <img src="degradado.jpg" alt="Degradado con diseño en la nuca" width="400" height="500" loading="lazy"><span>Degradado</span></button></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACTO: listo para conectar a un back-end (ver data-endpoint) -->
+    <section class="seccion" id="contacto">
+      <div class="contenedor contacto">
+        <div>
+          <h2>Reserva tu turno</h2>
+          <p>Déjanos tus datos y te confirmamos el horario por teléfono.</p>
+        </div>
+        <form id="formContacto" action="/api/contacto" method="post" data-endpoint="/api/contacto" novalidate autocomplete="on">
+          <input type="hidden" name="csrf_token" value=""><!-- el servidor llenará este token -->
+          <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" type="text" maxlength="60" autocomplete="name" required>
+            <small class="error" id="e-nombre" role="alert"></small>
+          </div>
+          <div class="campo">
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" name="telefono" type="tel" maxlength="15" inputmode="tel" autocomplete="tel" required>
+            <small class="error" id="e-telefono" role="alert"></small>
+          </div>
+          <div class="campo">
+            <label for="email">Correo</label>
+            <input id="email" name="email" type="email" maxlength="80" autocomplete="email" required>
+            <small class="error" id="e-email" role="alert"></small>
+          </div>
+          <div class="campo">
+            <label for="servicio">Servicio</label>
+            <select id="servicio" name="servicio" required>
+              <option value="">Elige un servicio</option>
+              <option value="corte">Corte clásico</option>
+              <option value="barba">Arreglo de barba</option>
+              <option value="afeitado">Afeitado tradicional</option>
+              <option value="combo">Combo completo</option>
+            </select>
+            <small class="error" id="e-servicio" role="alert"></small>
+          </div>
+          <div class="campo">
+            <label for="mensaje">Mensaje (opcional)</label>
+            <textarea id="mensaje" name="mensaje" rows="3" maxlength="300"></textarea>
+            <small class="error" id="e-mensaje" role="alert"></small>
+          </div>
+          <!-- Honeypot: los humanos no lo ven, los bots sí lo llenan -->
+          <div class="trampa" aria-hidden="true"><label>Web <input name="web" tabindex="-1" autocomplete="off"></label></div>
+          <button class="boton" type="submit" id="enviar">Enviar solicitud</button>
+          <p id="estado" class="estado" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="pie">
+    <div class="contenedor">
+      <p>Lunes a sábado, 9:00 a. m. a 8:00 p. m. · Calle 00 # 00-00</p>
+      <p>&copy; <span id="anio">2026</span> Barbería El Arriero Ilustrado. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- VISOR (lightbox): usa <dialog>, que ya trae foco atrapado y cierre con Escape -->
+  <dialog id="visor" class="visor" aria-label="Visor de imágenes">
+    <button type="button" class="visor-btn cerrar" id="visorCerrar" aria-label="Cerrar visor">&times;</button>
+    <button type="button" class="visor-btn ant" id="visorAnt" aria-label="Foto anterior">&#8249;</button>
+    <figure>
+      <img id="visorImg" alt="">
+      <figcaption id="visorPie"></figcaption>
+    </figure>
+    <button type="button" class="visor-btn sig" id="visorSig" aria-label="Foto siguiente">&#8250;</button>
+  </dialog>
+
+  <!-- BOTÓN VOLVER ARRIBA -->
+  <button type="button" class="arriba" id="arriba" aria-label="Volver arriba">&#8593;</button>
+</body>
+</html>
