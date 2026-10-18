@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Seguridad: la política CSP solo permite recursos propios y las fuentes de Google.
+       Si más adelante conectas un servidor en otro dominio, agrégalo en connect-src. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#142a25">
+  <meta name="description" content="Barbería El Arriero Ilustrado: cortes para hombre y dama, barba, afeitado tradicional, decoloración, tintes y productos para el cabello. Reserva tu turno por WhatsApp.">
+  <meta property="og:title" content="Barbería El Arriero Ilustrado">
+  <meta property="og:description" content="Cortes para hombre y dama, barba, color y productos. Reserva tu turno en línea.">
+  <meta property="og:type" content="website">
+  <title>Barbería El Arriero Ilustrado | Cortes, barba y color</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;800&family=Work+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <!-- config.js: aquí cambias tu WhatsApp, horario y dirección -->
+  <script src="config.js" defer></script>
+  <script src="script.js" defer></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"HairSalon","name":"Barbería El Arriero Ilustrado","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"20:00"}]}
+  </script>
+</head>
+<body>
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <!-- ENCABEZADO: logo y navegación -->
+  <header class="encabezado">
+    <div class="contenedor barra">
+      <a class="logo" href="#inicio" aria-label="Barbería El Arriero Ilustrado, inicio">
+        <span class="logo-marca" aria-hidden="true">A·I</span>
+        <span>El Arriero Ilustrado</span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menú</button>
+      <nav id="menu" class="menu" aria-label="Principal">
+        <a href="#hombres">Hombres</a>
+        <a href="#damas">Damas</a>
+        <a href="#color">Color</a>
+        <a href="#productos">Productos</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#reservar" class="menu-cta">Reservar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- PORTADA -->
+    <section class="portada" id="inicio">
+      <div class="contenedor">
+        <p class="portada-sub">Barbería y peluquería</p>
+        <h1>Corte de oficio,<br>trato de caballeros.</h1>
+        <p class="portada-texto">Navaja, tijera y paciencia, para hombres y damas. Corte, barba, color y productos para tu cabello.</p>
+        <div class="portada-acciones">
+          <a class="boton" href="#reservar">Reservar turno</a>
+          <a class="boton boton-claro" href="#contacto" data-wa data-wa-msg="Hola, quisiera información sobre sus servicios.">Escribir por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOMBRES -->
+    <section class="seccion" id="hombres">
+      <div class="contenedor">
+        <h2>Cortes y barba para hombre</h2>
+        <p class="intro">Todos los cortes incluyen lavado y peinado final.</p>
+        <h3 class="grupo">Cortes</h3>
+        <ul class="carta">
+          <li class="plato" data-servicio="corte" data-cat="hombres" data-nombre="Corte clásico" data-precio="25000" data-min="45" data-desde="0">
+            <div class="plato-info"><h4>Corte clásico</h4><p>Tijera y máquina, acabado con navaja. <span class="duracion">45 min</span></p></div>
+            <span class="plato-precio">$25.000</span>
+            <button type="button" class="plato-btn" data-reservar="corte" aria-label="Reservar Corte clásico">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="degradado" data-cat="hombres" data-nombre="Degradado (fade)" data-precio="28000" data-min="45" data-desde="0">
+            <div class="plato-info"><h4>Degradado (fade)</h4><p>Bajo, medio, alto o skin fade, difuminado a tu medida. <span class="duracion">45 min</span></p></div>
+            <span class="plato-precio">$28.000</span>
+            <button type="button" class="plato-btn" data-reservar="degradado" aria-label="Reservar Degradado (fade)">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="taper" data-cat="hombres" data-nombre="Taper fade" data-precio="28000" data-min="45" data-desde="0">
+            <div class="plato-info"><h4>Taper fade</h4><p>Contornos limpios y largo natural arriba. <span class="duracion">45 min</span></p></div>
+            <span class="plato-precio">$28.000</span>
+            <button type="button" class="plato-btn" data-reservar="taper" aria-label="Reservar Taper fade">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="rapado" data-cat="hombres" data-nombre="Rapado y buzz cut" data-precio="18000" data-min="30" data-desde="0">
+            <div class="plato-info"><h4>Rapado y buzz cut</h4><p>Un solo largo, perfilado y limpio. <span class="duracion">30 min</span></p></div>
+            <span class="plato-precio">$18.000</span>
+            <button type="button" class="plato-btn" data-reservar="rapado" aria-label="Reservar Rapado y buzz cut">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="pompadour" data-cat="hombres" data-nombre="Pompadour y quiff" data-precio="32000" data-min="50" data-desde="0">
+            <div class="plato-info"><h4>Pompadour y quiff</h4><p>Volumen y peinado con secador. <span class="duracion">50 min</span></p></div>
+            <span class="plato-precio">$32.000</span>
+            <button type="button" class="plato-btn" data-reservar="pompadour" aria-label="Reservar Pompadour y quiff">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="crop" data-cat="hombres" data-nombre="Crop francés" data-precio="28000" data-min="45" data-desde="0">
+            <div class="plato-info"><h4>Crop francés</h4><p>Corto, texturizado, con flequillo recto. <span class="duracion">45 min</span></p></div>
+            <span class="plato-precio">$28.000</span>
+            <button type="button" class="plato-btn" data-reservar="crop" aria-label="Reservar Crop francés">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="textura-h" data-cat="hombres" data-nombre="Corte texturizado" data-precio="30000" data-min="45" data-desde="0">
+            <div class="plato-info"><h4>Corte texturizado</h4><p>Capas ligeras para cabello ondulado o rizado. <span class="duracion">45 min</span></p></div>
+            <span class="plato-precio">$30.000</span>
+            <button type="button" class="plato-btn" data-reservar="textura-h" aria-label="Reservar Corte texturizado">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="diseno-h" data-cat="hombres" data-nombre="Corte con diseño" data-precio="35000" data-min="60" data-desde="0">
+            <div class="plato-info"><h4>Corte con diseño</h4><p>Líneas, figuras y rayas a navaja. <span class="duracion">1 h</span></p></div>
+            <span class="plato-precio">$35.000</span>
+            <button type="button" class="plato-btn" data-reservar="diseno-h" aria-label="Reservar Corte con diseño">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="nino" data-cat="hombres" data-nombre="Corte infantil" data-precio="20000" data-min="30" data-desde="0">
+            <div class="plato-info"><h4>Corte infantil</h4><p>Hasta 12 años. <span class="duracion">30 min</span></p></div>
+            <span class="plato-precio">$20.000</span>
+            <button type="button" class="plato-btn" data-reservar="nino" aria-label="Reservar Corte infantil">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="mayor" data-cat="hombres" data-nombre="Corte caballero mayor" data-precio="22000" data-min="40" data-desde="0">
+            <div class="plato-info"><h4>Corte caballero mayor</h4><p>Tijera, sin afán y con buen trato. <span class="duracion">40 min</span></p></div>
+            <span class="plato-precio">$22.000</span>
+            <button type="button" class="plato-btn" data-reservar="mayor" aria-label="Reservar Corte caballero mayor">Reservar</button>
+          </li>
+        </ul>
+        <h3 class="grupo">Barba y afeitado</h3>
+        <ul class="carta">
+          <li class="plato" data-servicio="barba" data-cat="hombres" data-nombre="Arreglo de barba" data-precio="20000" data-min="30" data-desde="0">
+            <div class="plato-info"><h4>Arreglo de barba</h4><p>Perfilado, toalla caliente y aceite. <span class="duracion">30 min</span></p></div>
+            <span class="plato-precio">$20.000</span>
+            <button type="button" class="plato-btn" data-reservar="barba" aria-label="Reservar Arreglo de barba">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="afeitado" data-cat="hombres" data-nombre="Afeitado tradicional" data-precio="30000" data-min="40" data-desde="0">
+            <div class="plato-info"><h4>Afeitado tradicional</h4><p>Navaja recta y espuma artesanal. <span class="duracion">40 min</span></p></div>
+            <span class="plato-precio">$30.000</span>
+            <button type="button" class="plato-btn" data-reservar="afeitado" aria-label="Reservar Afeitado tradicional">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="cejas" data-cat="hombres" data-nombre="Perfilado de cejas" data-precio="8000" data-min="15" data-desde="0">
+            <div class="plato-info"><h4>Perfilado de cejas</h4><p>A navaja o pinza, natural. <span class="duracion">15 min</span></p></div>
+            <span class="plato-precio">$8.000</span>
+            <button type="button" class="plato-btn" data-reservar="cejas" aria-label="Reservar Perfilado de cejas">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="facial" data-cat="hombres" data-nombre="Limpieza facial express" data-precio="25000" data-min="30" data-desde="0">
+            <div class="plato-info"><h4>Limpieza facial express</h4><p>Vapor, exfoliación y mascarilla. <span class="duracion">30 min</span></p></div>
+            <span class="plato-precio">$25.000</span>
+            <button type="button" class="plato-btn" data-reservar="facial" aria-label="Reservar Limpieza facial express">Reservar</button>
+          </li>
+        </ul>
+        <h3 class="grupo">Combos</h3>
+        <ul class="carta">
+          <li class="plato" data-servicio="combo" data-cat="hombres" data-nombre="Combo completo" data-precio="40000" data-min="75" data-desde="0">
+            <div class="plato-info"><h4>Combo completo</h4><p>Corte y barba en una sola sesión. <span class="duracion">1 h 15 min</span></p></div>
+            <span class="plato-precio">$40.000</span>
+            <button type="button" class="plato-btn" data-reservar="combo" aria-label="Reservar Combo completo">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="combo-fade" data-cat="hombres" data-nombre="Combo degradado y barba" data-precio="45000" data-min="75" data-desde="0">
+            <div class="plato-info"><h4>Combo degradado y barba</h4><p>Degradado a elección, barba perfilada y toalla caliente. <span class="duracion">1 h 15 min</span></p></div>
+            <span class="plato-precio">$45.000</span>
+            <button type="button" class="plato-btn" data-reservar="combo-fade" aria-label="Reservar Combo degradado y barba">Reservar</button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DAMAS -->
+    <section class="seccion seccion-papel" id="damas">
+      <div class="contenedor">
+        <h2>Cortes para dama</h2>
+        <p class="intro">¿No sabes cuál elegir? Escríbenos con una foto de referencia y te asesoramos según tu tipo de cabello y rostro. El precio depende del largo y la densidad del cabello.</p>
+        <h3 class="grupo">Cortes cortos</h3>
+        <ul class="carta">
+          <li class="plato" data-servicio="pixie" data-cat="damas" data-nombre="Pixie" data-precio="40000" data-min="60" data-desde="1">
+            <div class="plato-info"><h4>Pixie</h4><p>Corto, con textura y mucho carácter. <span class="duracion">1 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $40.000</span>
+            <button type="button" class="plato-btn" data-reservar="pixie" aria-label="Reservar Pixie">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="bob" data-cat="damas" data-nombre="Bob clásico" data-precio="38000" data-min="60" data-desde="1">
+            <div class="plato-info"><h4>Bob clásico</h4><p>Recto, a la altura de la mandíbula. <span class="duracion">1 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $38.000</span>
+            <button type="button" class="plato-btn" data-reservar="bob" aria-label="Reservar Bob clásico">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="bob-asim" data-cat="damas" data-nombre="Bob asimétrico" data-precio="42000" data-min="60" data-desde="1">
+            <div class="plato-info"><h4>Bob asimétrico</h4><p>Un lado más largo, línea marcada. <span class="duracion">1 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $42.000</span>
+            <button type="button" class="plato-btn" data-reservar="bob-asim" aria-label="Reservar Bob asimétrico">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="garcon" data-cat="damas" data-nombre="Garçon" data-precio="38000" data-min="50" data-desde="1">
+            <div class="plato-info"><h4>Garçon</h4><p>Muy corto, limpio y atrevido. <span class="duracion">50 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $38.000</span>
+            <button type="button" class="plato-btn" data-reservar="garcon" aria-label="Reservar Garçon">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="hongo" data-cat="damas" data-nombre="Corte hongo" data-precio="40000" data-min="60" data-desde="1">
+            <div class="plato-info"><h4>Corte hongo</h4><p>Volumen redondeado y nuca corta. <span class="duracion">1 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $40.000</span>
+            <button type="button" class="plato-btn" data-reservar="hongo" aria-label="Reservar Corte hongo">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="undercut-d" data-cat="damas" data-nombre="Undercut femenino" data-precio="38000" data-min="50" data-desde="1">
+            <div class="plato-info"><h4>Undercut femenino</h4><p>Nuca o laterales rapados, arriba largo. <span class="duracion">50 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $38.000</span>
+            <button type="button" class="plato-btn" data-reservar="undercut-d" aria-label="Reservar Undercut femenino">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="rapado-d" data-cat="damas" data-nombre="Rapado con diseño" data-precio="35000" data-min="50" data-desde="1">
+            <div class="plato-info"><h4>Rapado con diseño</h4><p>Cabeza rapada con líneas o figuras. <span class="duracion">50 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $35.000</span>
+            <button type="button" class="plato-btn" data-reservar="rapado-d" aria-label="Reservar Rapado con diseño">Reservar</button>
+          </li>
+        </ul>
+        <h3 class="grupo">Cortes medios y largos</h3>
+        <ul class="carta">
+          <li class="plato" data-servicio="lob" data-cat="damas" data-nombre="Long bob (lob)" data-precio="40000" data-min="60" data-desde="1">
+            <div class="plato-info"><h4>Long bob (lob)</h4><p>Bob largo, a la altura de los hombros. <span class="duracion">1 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $40.000</span>
+            <button type="button" class="plato-btn" data-reservar="lob" aria-label="Reservar Long bob (lob)">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="capas-largas" data-cat="damas" data-nombre="Capas largas" data-precio="42000" data-min="70" data-desde="1">
+            <div class="plato-info"><h4>Capas largas</h4><p>Movimiento y volumen sin perder largo. <span class="duracion">1 h 10 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $42.000</span>
+            <button type="button" class="plato-btn" data-reservar="capas-largas" aria-label="Reservar Capas largas">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="desfilado" data-cat="damas" data-nombre="Desfilado" data-precio="40000" data-min="60" data-desde="1">
+            <div class="plato-info"><h4>Desfilado</h4><p>Puntas livianas y sin peso. <span class="duracion">1 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $40.000</span>
+            <button type="button" class="plato-btn" data-reservar="desfilado" aria-label="Reservar Desfilado">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="shag" data-cat="damas" data-nombre="Shag" data-precio="45000" data-min="70" data-desde="1">
+            <div class="plato-info"><h4>Shag</h4><p>Capas desordenadas con mucha textura. <span class="duracion">1 h 10 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $45.000</span>
+            <button type="button" class="plato-btn" data-reservar="shag" aria-label="Reservar Shag">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="wolf" data-cat="damas" data-nombre="Wolf cut" data-precio="48000" data-min="75" data-desde="1">
+            <div class="plato-info"><h4>Wolf cut</h4><p>Mezcla de shag y mullet, volumen arriba. <span class="duracion">1 h 15 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $48.000</span>
+            <button type="button" class="plato-btn" data-reservar="wolf" aria-label="Reservar Wolf cut">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="butterfly" data-cat="damas" data-nombre="Butterfly cut" data-precio="48000" data-min="75" data-desde="1">
+            <div class="plato-info"><h4>Butterfly cut</h4><p>Capas largas con volumen al frente. <span class="duracion">1 h 15 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $48.000</span>
+            <button type="button" class="plato-btn" data-reservar="butterfly" aria-label="Reservar Butterfly cut">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="corte-u" data-cat="damas" data-nombre="Corte en U" data-precio="38000" data-min="60" data-desde="1">
+            <div class="plato-info"><h4>Corte en U</h4><p>Puntas redondeadas, caída suave. <span class="duracion">1 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $38.000</span>
+            <button type="button" class="plato-btn" data-reservar="corte-u" aria-label="Reservar Corte en U">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="corte-v" data-cat="damas" data-nombre="Corte en V" data-precio="38000" data-min="60" data-desde="1">
+            <div class="plato-info"><h4>Corte en V</h4><p>Punta hacia el centro de la espalda. <span class="duracion">1 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $38.000</span>
+            <button type="button" class="plato-btn" data-reservar="corte-v" aria-label="Reservar Corte en V">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="blunt" data-cat="damas" data-nombre="Corte recto (blunt)" data-precio="38000" data-min="60" data-desde="1">
+            <div class="plato-info"><h4>Corte recto (blunt)</h4><p>Una sola línea, cabello denso y brillante. <span class="duracion">1 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $38.000</span>
+            <button type="button" class="plato-btn" data-reservar="blunt" aria-label="Reservar Corte recto (blunt)">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="mullet-d" data-cat="damas" data-nombre="Mullet femenino" data-precio="48000" data-min="75" data-desde="1">
+            <div class="plato-info"><h4>Mullet femenino</h4><p>Corto arriba, largo atrás. <span class="duracion">1 h 15 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $48.000</span>
+            <button type="button" class="plato-btn" data-reservar="mullet-d" aria-label="Reservar Mullet femenino">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="degradado-d" data-cat="damas" data-nombre="Degradado femenino" data-precio="42000" data-min="70" data-desde="1">
+            <div class="plato-info"><h4>Degradado femenino</h4><p>Transición suave entre largos. <span class="duracion">1 h 10 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $42.000</span>
+            <button type="button" class="plato-btn" data-reservar="degradado-d" aria-label="Reservar Degradado femenino">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="despuntado" data-cat="damas" data-nombre="Despuntado y mantenimiento" data-precio="25000" data-min="40" data-desde="1">
+            <div class="plato-info"><h4>Despuntado y mantenimiento</h4><p>Quitamos puntas abiertas y mantenemos tu forma. <span class="duracion">40 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $25.000</span>
+            <button type="button" class="plato-btn" data-reservar="despuntado" aria-label="Reservar Despuntado y mantenimiento">Reservar</button>
+          </li>
+        </ul>
+        <h3 class="grupo">Flequillos</h3>
+        <ul class="carta">
+          <li class="plato" data-servicio="fl-cortina" data-cat="damas" data-nombre="Flequillo cortina" data-precio="15000" data-min="20" data-desde="0">
+            <div class="plato-info"><h4>Flequillo cortina</h4><p>Abierto al centro, enmarca el rostro. <span class="duracion">20 min</span></p></div>
+            <span class="plato-precio">$15.000</span>
+            <button type="button" class="plato-btn" data-reservar="fl-cortina" aria-label="Reservar Flequillo cortina">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="fl-recto" data-cat="damas" data-nombre="Flequillo recto" data-precio="15000" data-min="20" data-desde="0">
+            <div class="plato-info"><h4>Flequillo recto</h4><p>Línea limpia sobre las cejas. <span class="duracion">20 min</span></p></div>
+            <span class="plato-precio">$15.000</span>
+            <button type="button" class="plato-btn" data-reservar="fl-recto" aria-label="Reservar Flequillo recto">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="fl-lateral" data-cat="damas" data-nombre="Flequillo lateral" data-precio="15000" data-min="20" data-desde="0">
+            <div class="plato-info"><h4>Flequillo lateral</h4><p>Largo, barrido hacia un lado. <span class="duracion">20 min</span></p></div>
+            <span class="plato-precio">$15.000</span>
+            <button type="button" class="plato-btn" data-reservar="fl-lateral" aria-label="Reservar Flequillo lateral">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="fl-wispy" data-cat="damas" data-nombre="Flequillo desfilado" data-precio="15000" data-min="20" data-desde="0">
+            <div class="plato-info"><h4>Flequillo desfilado</h4><p>Ligero y con transparencia. <span class="duracion">20 min</span></p></div>
+            <span class="plato-precio">$15.000</span>
+            <button type="button" class="plato-btn" data-reservar="fl-wispy" aria-label="Reservar Flequillo desfilado">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="face" data-cat="damas" data-nombre="Mechones que enmarcan el rostro" data-precio="20000" data-min="25" data-desde="0">
+            <div class="plato-info"><h4>Mechones que enmarcan el rostro</h4><p>Capas frontales para suavizar facciones. <span class="duracion">25 min</span></p></div>
+            <span class="plato-precio">$20.000</span>
+            <button type="button" class="plato-btn" data-reservar="face" aria-label="Reservar Mechones que enmarcan el rostro">Reservar</button>
+          </li>
+        </ul>
+        <h3 class="grupo">Peinado y cuidado</h3>
+        <ul class="carta">
+          <li class="plato" data-servicio="brushing" data-cat="damas" data-nombre="Lavado y secado" data-precio="30000" data-min="45" data-desde="1">
+            <div class="plato-info"><h4>Lavado y secado</h4><p>Lavado, secado con cepillo y acabado. <span class="duracion">45 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $30.000</span>
+            <button type="button" class="plato-btn" data-reservar="brushing" aria-label="Reservar Lavado y secado">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="ondas" data-cat="damas" data-nombre="Ondas y rizos" data-precio="35000" data-min="50" data-desde="1">
+            <div class="plato-info"><h4>Ondas y rizos</h4><p>Con plancha o tenaza, fijación suave. <span class="duracion">50 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $35.000</span>
+            <button type="button" class="plato-btn" data-reservar="ondas" aria-label="Reservar Ondas y rizos">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="evento" data-cat="damas" data-nombre="Peinado para evento" data-precio="70000" data-min="90" data-desde="1">
+            <div class="plato-info"><h4>Peinado para evento</h4><p>Recogidos y semirecogidos. Reserva con tiempo. <span class="duracion">1 h 30 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $70.000</span>
+            <button type="button" class="plato-btn" data-reservar="evento" aria-label="Reservar Peinado para evento">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="hidratacion" data-cat="damas" data-nombre="Hidratación profunda" data-precio="40000" data-min="45" data-desde="0">
+            <div class="plato-info"><h4>Hidratación profunda</h4><p>Mascarilla, vapor y masaje. <span class="duracion">45 min</span></p></div>
+            <span class="plato-precio">$40.000</span>
+            <button type="button" class="plato-btn" data-reservar="hidratacion" aria-label="Reservar Hidratación profunda">Reservar</button>
+          </li>
+        </ul>
+        <p class="nota"><a href="#contacto" data-wa data-wa-msg="Hola, quisiera una asesoría para elegir un corte. Te envío una foto de referencia.">Pedir asesoría por WhatsApp</a></p>
+      </div>
+    </section>
+
+    <!-- COLOR -->
+    <section class="seccion" id="color">
+      <div class="contenedor">
+        <h2>Decoloración y tintes</h2>
+        <p class="intro">El precio final cambia con el largo, la densidad y el estado de tu cabello. Envíanos una foto por WhatsApp y te damos el valor exacto antes de empezar, sin costo.</p>
+        <h3 class="grupo">Decoloración y mechas</h3>
+        <ul class="carta">
+          <li class="plato" data-servicio="deco-global" data-cat="color" data-nombre="Decoloración global" data-precio="120000" data-min="180" data-desde="1">
+            <div class="plato-info"><h4>Decoloración global</h4><p>Aclaramos todo el cabello al nivel que busques. <span class="duracion">3 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $120.000</span>
+            <button type="button" class="plato-btn" data-reservar="deco-global" aria-label="Reservar Decoloración global">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="deco-raiz" data-cat="color" data-nombre="Decoloración de raíz" data-precio="70000" data-min="120" data-desde="1">
+            <div class="plato-info"><h4>Decoloración de raíz</h4><p>Retoque del crecimiento. <span class="duracion">2 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $70.000</span>
+            <button type="button" class="plato-btn" data-reservar="deco-raiz" aria-label="Reservar Decoloración de raíz">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="mechas" data-cat="color" data-nombre="Mechas y balayage" data-precio="150000" data-min="240" data-desde="1">
+            <div class="plato-info"><h4>Mechas y balayage</h4><p>Luz repartida a mano, efecto natural. <span class="duracion">4 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $150.000</span>
+            <button type="button" class="plato-btn" data-reservar="mechas" aria-label="Reservar Mechas y balayage">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="babylights" data-cat="color" data-nombre="Babylights" data-precio="160000" data-min="240" data-desde="1">
+            <div class="plato-info"><h4>Babylights</h4><p>Mechas muy finas, aclarado sutil. <span class="duracion">4 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $160.000</span>
+            <button type="button" class="plato-btn" data-reservar="babylights" aria-label="Reservar Babylights">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="platino" data-cat="color" data-nombre="Platino" data-precio="200000" data-min="240" data-desde="1">
+            <div class="plato-info"><h4>Platino</h4><p>Decoloración y matizado hasta el rubio más claro. <span class="duracion">4 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $200.000</span>
+            <button type="button" class="plato-btn" data-reservar="platino" aria-label="Reservar Platino">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="reflejos-h" data-cat="color" data-nombre="Reflejos para hombre" data-precio="80000" data-min="120" data-desde="1">
+            <div class="plato-info"><h4>Reflejos para hombre</h4><p>Claritos con gorro o papel. <span class="duracion">2 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $80.000</span>
+            <button type="button" class="plato-btn" data-reservar="reflejos-h" aria-label="Reservar Reflejos para hombre">Reservar</button>
+          </li>
+        </ul>
+        <h3 class="grupo">Tintes</h3>
+        <ul class="carta">
+          <li class="plato" data-servicio="tinte-global" data-cat="color" data-nombre="Tinte global" data-precio="70000" data-min="120" data-desde="1">
+            <div class="plato-info"><h4>Tinte global</h4><p>Un solo color, de raíz a puntas. <span class="duracion">2 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $70.000</span>
+            <button type="button" class="plato-btn" data-reservar="tinte-global" aria-label="Reservar Tinte global">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="tinte-raiz" data-cat="color" data-nombre="Retoque de raíz" data-precio="55000" data-min="90" data-desde="1">
+            <div class="plato-info"><h4>Retoque de raíz</h4><p>Cubrimos el crecimiento. <span class="duracion">1 h 30 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $55.000</span>
+            <button type="button" class="plato-btn" data-reservar="tinte-raiz" aria-label="Reservar Retoque de raíz">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="canas-d" data-cat="color" data-nombre="Cobertura de canas (damas)" data-precio="60000" data-min="90" data-desde="1">
+            <div class="plato-info"><h4>Cobertura de canas (damas)</h4><p>Cobertura uniforme o difuminada. <span class="duracion">1 h 30 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $60.000</span>
+            <button type="button" class="plato-btn" data-reservar="canas-d" aria-label="Reservar Cobertura de canas (damas)">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="canas-h" data-cat="color" data-nombre="Cobertura de canas (caballeros)" data-precio="35000" data-min="45" data-desde="1">
+            <div class="plato-info"><h4>Cobertura de canas (caballeros)</h4><p>Natural, que no se note el tinte. <span class="duracion">45 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $35.000</span>
+            <button type="button" class="plato-btn" data-reservar="canas-h" aria-label="Reservar Cobertura de canas (caballeros)">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="tinte-barba" data-cat="color" data-nombre="Tinte de barba" data-precio="25000" data-min="30" data-desde="0">
+            <div class="plato-info"><h4>Tinte de barba</h4><p>Tono natural, sin manchar la piel. <span class="duracion">30 min</span></p></div>
+            <span class="plato-precio">$25.000</span>
+            <button type="button" class="plato-btn" data-reservar="tinte-barba" aria-label="Reservar Tinte de barba">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="fantasia" data-cat="color" data-nombre="Colores fantasía" data-precio="130000" data-min="210" data-desde="1">
+            <div class="plato-info"><h4>Colores fantasía</h4><p>Azul, rosado, verde, violeta y más. <span class="duracion">3 h 30 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $130.000</span>
+            <button type="button" class="plato-btn" data-reservar="fantasia" aria-label="Reservar Colores fantasía">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="matiz" data-cat="color" data-nombre="Matiz y tonalizante" data-precio="45000" data-min="45" data-desde="1">
+            <div class="plato-info"><h4>Matiz y tonalizante</h4><p>Corrige el tono y devuelve brillo. <span class="duracion">45 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $45.000</span>
+            <button type="button" class="plato-btn" data-reservar="matiz" aria-label="Reservar Matiz y tonalizante">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="ombre" data-cat="color" data-nombre="Ombré y degradado de color" data-precio="170000" data-min="240" data-desde="1">
+            <div class="plato-info"><h4>Ombré y degradado de color</h4><p>Transición de color de medios a puntas. <span class="duracion">4 h</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $170.000</span>
+            <button type="button" class="plato-btn" data-reservar="ombre" aria-label="Reservar Ombré y degradado de color">Reservar</button>
+          </li>
+          <li class="plato" data-servicio="correccion" data-cat="color" data-nombre="Corrección de color" data-precio="200000" data-min="270" data-desde="1">
+            <div class="plato-info"><h4>Corrección de color</h4><p>Arreglamos un color que no quedó como querías. <span class="duracion">4 h 30 min</span></p></div>
+            <span class="plato-precio"><span class="desde">desde</span> $200.000</span>
+            <button type="button" class="plato-btn" data-reservar="correccion" aria-label="Reservar Corrección de color">Reservar</button>
+          </li>
+        </ul>
+        <h3 class="grupo">Cuidado del color</h3>
+        <ul class="carta">
+          <li class="plato" data-servicio="post-color" data-cat="color" data-nombre="Tratamiento post-color" data-precio="40000" data-min="40" data-desde="0">
+            <div class="plato-info"><h4>Tratamiento post-color</h4><p>Repara y sella el cabello después del proceso. <span class="duracion">40 min</span></p></div>
+            <span class="plato-precio">$40.000</span>
+            <button type="button" class="plato-btn" data-reservar="post-color" aria-label="Reservar Tratamiento post-color">Reservar</button>
+          </li>
+        </ul>
+        <p class="nota"><a href="#contacto" data-wa data-wa-msg="Hola, quiero una valoración para un servicio de color. Te envío fotos de mi cabello.">Pedir valoración por WhatsApp</a></p>
+      </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section class="seccion seccion-papel" id="productos">
+      <div class="contenedor">
+        <h2>Productos para el cabello</h2>
+        <p class="intro">Los mismos que usamos en la silla. Pídelos por WhatsApp y los recoges en el local.</p>
+        <div class="filtros" role="group" aria-label="Filtrar productos">
+          <button type="button" class="chip" data-filtro="todos" aria-pressed="true">Todos</button>
+          <button type="button" class="chip" data-filtro="peinado" aria-pressed="false">Peinado</button>
+          <button type="button" class="chip" data-filtro="barba" aria-pressed="false">Barba</button>
+          <button type="button" class="chip" data-filtro="cuidado" aria-pressed="false">Cuidado</button>
+          <button type="button" class="chip" data-filtro="color" aria-pressed="false">Color</button>
+        </div>
+        <ul class="productos" id="listaProductos">
+          <li class="producto" data-cat="peinado">
+            <h3>Cera mate, fijación fuerte</h3>
+            <p>Control todo el día, sin brillo.</p>
+            <div class="producto-pie"><strong>$28.000</strong><a class="boton-sec" href="#contacto" data-wa data-wa-msg="Hola, quiero pedir: Cera mate, fijación fuerte ($28.000).">Pedir por WhatsApp</a></div>
+          </li>
+          <li class="producto" data-cat="peinado">
+            <h3>Pomada con brillo</h3>
+            <p>Peinados clásicos, se lava fácil.</p>
+            <div class="producto-pie"><strong>$30.000</strong><a class="boton-sec" href="#contacto" data-wa data-wa-msg="Hola, quiero pedir: Pomada con brillo ($30.000).">Pedir por WhatsApp</a></div>
+          </li>
+          <li class="producto" data-cat="peinado">
+            <h3>Polvo texturizante</h3>
+            <p>Volumen y textura al instante.</p>
+            <div class="producto-pie"><strong>$32.000</strong><a class="boton-sec" href="#contacto" data-wa data-wa-msg="Hola, quiero pedir: Polvo texturizante ($32.000).">Pedir por WhatsApp</a></div>
+          </li>
+          <li class="producto" data-cat="peinado">
+            <h3>Spray fijador</h3>
+            <p>Fijación flexible para cualquier peinado.</p>
+            <div class="producto-pie"><strong>$22.000</strong><a class="boton-sec" href="#contacto" data-wa data-wa-msg="Hola, quiero pedir: Spray fijador ($22.000).">Pedir por WhatsApp</a></div>
+          </li>
+          <li class="producto" data-cat="barba">
+            <h3>Aceite para barba</h3>
+            <p>Suaviza, da brillo y cuida la piel.</p>
+            <div class="producto-pie"><strong>$35.000</strong><a class="boton-sec" href="#contacto" data-wa data-wa-msg="Hola, quiero pedir: Aceite para barba ($35.000).">Pedir por WhatsApp</a></div>
+          </li>
+          <li class="producto" data-cat="barba">
+            <h3>Bálsamo para barba</h3>
+            <p>Da forma y controla el frizz.</p>
+            <div class="producto-pie"><strong>$38.000</strong><a class="boton-sec" href="#contacto" data-wa data-wa-msg="Hola, quiero pedir: Bálsamo para barba ($38.000).">Pedir por WhatsApp</a></div>
+          </li>
+          <li class="producto" data-cat="barba">
+            <h3>Shampoo para barba</h3>
+            <p>Limpia sin resecar.</p>
+            <div class="producto-pie"><strong>$30.000</strong><a class="boton-sec" href="#contacto" data-wa data-wa-msg="Hola, quiero pedir: Shampoo para barba ($30.000).">Pedir por WhatsApp</a></div>
+          </li>
+          <li class="producto" data-cat="barba">
+            <h3>Cera para bigote</h3>
+            <p>Fijación firme para bigotes largos.</p>
+            <div class="producto-pie"><strong>$20.000</strong><a class="boton-sec" href="#contacto" data-wa data-wa-msg="Hola, quiero pedir: Cera para bigote ($20.000).">Pedir por WhatsApp</a></div>
+          </li>
+          <li class="producto" data-cat="cuidado">
+            <h3>Shampoo hidratante</h3>
+            <p>Uso diario, para cabello normal o seco.</p>
+            <div class="producto-pie"><strong>$40.000</strong><a class="boton-sec" href="#contacto" data-wa data-wa-msg="Hola, quiero pedir: Shampoo hidratante ($40.000).">Pedir por WhatsApp</a></div>
+          </li>
+          <li class="producto" data-cat="cuidado">
+            <h3>Acondicionador</h3>
+            <p>Desenreda y suaviza.</p>
+            <div class="producto-pie"><strong>$40.000</strong><a class="boton-sec" href="#contacto" data-wa data-wa-msg="Hola, quiero pedir: Acondicionador ($40.000).">Pedir por WhatsApp</a></div>
+          </li>
+          <li class="producto" data-cat="cuidado">
+            <h3>Mascarilla reparadora</h3>
+            <p>Para cabello maltratado por el calor.</p>
+            <div class="producto-pie"><strong>$55.000</strong><a class="boton-sec" href="#contacto" data-wa data-wa-msg="Hola, quiero pedir: Mascarilla reparadora ($55.000).">Pedir por WhatsApp</a></div>
+          </li>
+          <li class="producto" data-cat="cuidado">
+            <h3>Protector térmico</h3>
+            <p>Antes de secador y plancha.</p>
+            <div class="producto-pie"><strong>$35.000</strong><a class="boton-sec" href="#contacto" data-wa data-wa-msg="Hola, quiero pedir: Protector térmico ($35.000).">Pedir por WhatsApp</a></div>
+          </li>
+          <li class="producto" data-cat="color">
+            <h3>Shampoo matizador violeta</h3>
+            <p>Neutraliza el tono amarillo en cabello rubio o canoso.</p>
+            <div class="producto-pie"><strong>$48.000</strong><a class="boton-sec" href="#contacto" data-wa data-wa-msg="Hola, quiero pedir: Shampoo matizador violeta ($48.000).">Pedir por WhatsApp</a></div>
+          </li>
+          <li class="producto" data-cat="color">
+            <h3>Shampoo para cabello teñido</h3>
+            <p>Cuida el color y alarga su duración.</p>
+            <div class="producto-pie"><strong>$45.000</strong><a class="boton-sec" href="#contacto" data-wa data-wa-msg="Hola, quiero pedir: Shampoo para cabello teñido ($45.000).">Pedir por WhatsApp</a></div>
+          </li>
+          <li class="producto" data-cat="color">
+            <h3>Tratamiento anti-quiebre</h3>
+            <p>Para cabello decolorado.</p>
+            <div class="producto-pie"><strong>$60.000</strong><a class="boton-sec" href="#contacto" data-wa data-wa-msg="Hola, quiero pedir: Tratamiento anti-quiebre ($60.000).">Pedir por WhatsApp</a></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- GALERÍA: cada foto es un botón para que también se abra con teclado -->
+    <section class="seccion seccion-oscura" id="galeria">
+      <div class="contenedor">
+        <h2>Galería</h2>
+        <ul class="galeria">
+          <li><button type="button" class="foto" aria-label="Ampliar foto: Afeitado con navaja">
+            <img src="afeitado.jpg" alt="Afeitado con navaja" width="400" height="500" loading="lazy"><span>Afeitado</span></button></li>
+          <li><button type="button" class="foto" aria-label="Ampliar foto: Barba perfilada">
+            <img src="barba perfilada.jpg" alt="Barba perfilada con degradado lateral" width="400" height="500" loading="lazy"><span>Barba perfilada</span></button></li>
+          <li><button type="button" class="foto" aria-label="Ampliar foto: Corte clásico">
+            <img src="corte clasico.jpg" alt="Corte clásico con tijera y máquina" width="400" height="500" loading="lazy"><span>Corte clásico</span></button></li>
+          <li><button type="button" class="foto" aria-label="Ampliar foto: Degradado con diseño">
+            <img src="degradado.jpg" alt="Degradado con diseño en la nuca" width="400" height="500" loading="lazy"><span>Degradado</span></button></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RESERVAR: asistente de 4 pasos -->
+    <section class="seccion" id="reservar" aria-labelledby="tituloReservar">
+      <div class="contenedor reserva">
+        <div class="reserva-intro">
+          <h2 id="tituloReservar">Reserva tu turno</h2>
+          <p>Elige tus servicios, el día y la hora. Al final se abre WhatsApp con tu solicitud lista para enviar, y te confirmamos el turno por ahí.</p>
+          <p class="reserva-nota">Atendemos de lunes a sábado. Los turnos de color se confirman después de ver fotos de tu cabello.</p>
+        </div>
+
+        <div class="reserva-caja" id="reservaCaja">
+          <ol class="pasos" id="pasos" aria-label="Progreso de la reserva">
+            <li data-paso="1">Servicios</li>
+            <li data-paso="2">Fecha y hora</li>
+            <li data-paso="3">Tus datos</li>
+            <li data-paso="4">Confirmar</li>
+          </ol>
+
+          <form id="formReserva" novalidate autocomplete="on">
+            <!-- Paso 1 -->
+            <div class="paso" data-panel="1">
+              <h3 tabindex="-1">¿Qué te vas a hacer?</h3>
+              <p class="ayuda">Puedes elegir más de un servicio.</p>
+              <div id="reservaServicios"></div>
+            </div>
+
+            <!-- Paso 2 -->
+            <div class="paso" data-panel="2" hidden>
+              <h3 tabindex="-1">¿Cuándo vienes?</h3>
+              <p class="ayuda" id="duracionAyuda"></p>
+              <div class="dias" id="dias" role="radiogroup" aria-label="Día"></div>
+              <h4 class="sub" id="tituloHoras" hidden>Horas disponibles</h4>
+              <div class="horas" id="horas" role="radiogroup" aria-label="Hora"></div>
+            </div>
+
+            <!-- Paso 3 -->
+            <div class="paso" data-panel="3" hidden>
+              <h3 tabindex="-1">¿A nombre de quién?</h3>
+              <div class="campo">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" name="nombre" type="text" maxlength="60" autocomplete="name" required>
+                <small class="error" id="e-nombre" role="alert"></small>
+              </div>
+              <div class="campo">
+                <label for="telefono">Teléfono (opcional)</label>
+                <input id="telefono" name="telefono" type="tel" maxlength="15" inputmode="tel" autocomplete="tel">
+                <small class="error" id="e-telefono" role="alert"></small>
+              </div>
+              <div class="campo">
+                <label for="mensaje">Notas (opcional)</label>
+                <textarea id="mensaje" name="mensaje" rows="3" maxlength="300" placeholder="Por ejemplo: quiero un degradado bajo, o llevo una foto de referencia"></textarea>
+                <small class="error" id="e-mensaje" role="alert"></small>
+              </div>
+              <!-- Honeypot: los humanos no lo ven, los bots sí lo llenan -->
+              <div class="trampa" aria-hidden="true"><label>Web <input name="web" tabindex="-1" autocomplete="off"></label></div>
+            </div>
+
+            <!-- Paso 4 -->
+            <div class="paso" data-panel="4" hidden>
+              <h3 tabindex="-1">Revisa tu solicitud</h3>
+              <dl class="resumen" id="resumen"></dl>
+              <p class="ayuda">Al confirmar se abre WhatsApp con el mensaje listo. Tu turno queda solicitado cuando lo envías, y te respondemos para confirmarlo.</p>
+            </div>
+
+            <!-- Éxito -->
+            <div class="paso" data-panel="5" hidden>
+              <h3 tabindex="-1">Solo falta enviar el mensaje</h3>
+              <p>Abrimos WhatsApp con tu solicitud. Envíala y te confirmamos el horario por ahí.</p>
+              <p><a class="boton-sec" id="reabrirWa" href="#reservar" target="_blank" rel="noopener noreferrer">Abrir WhatsApp de nuevo</a></p>
+              <p><button type="button" class="enlace" id="otraReserva">Hacer otra reserva</button></p>
+            </div>
+
+            <div class="reserva-barra" id="reservaBarra" role="status" aria-live="polite">Aún no elegiste servicios.</div>
+            <p class="error-general" id="estado" role="alert"></p>
+
+            <div class="reserva-nav" id="reservaNav">
+              <button type="button" class="boton boton-fantasma" id="atras" hidden>Atrás</button>
+              <button type="button" class="boton" id="siguiente">Continuar</button>
+              <button type="button" class="boton boton-wa" id="confirmar" hidden>Confirmar por WhatsApp</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="seccion seccion-papel" id="contacto">
+      <div class="contenedor contacto">
+        <div>
+          <h2>Contacto</h2>
+          <p>La forma más rápida de hablar con nosotros es por WhatsApp.</p>
+          <p class="contacto-acciones">
+            <a class="boton boton-wa" href="#contacto" data-wa data-wa-msg="Hola, quisiera información.">Abrir WhatsApp</a>
+            <a class="boton boton-fantasma" href="#contacto" data-tel>Llamar</a>
+          </p>
+          <ul class="datos">
+            <li><strong>Horario</strong><span>Lunes a sábado, 9:00 a. m. a 8:00 p. m.</span></li>
+            <li><strong>Dirección</strong><span data-direccion>Calle 00 # 00-00</span></li>
+            <li><a href="#contacto" data-mapa target="_blank" rel="noopener noreferrer">Cómo llegar</a></li>
+          </ul>
+        </div>
+        <form id="formMensaje" novalidate>
+          <h3>Escríbenos un mensaje</h3>
+          <div class="campo">
+            <label for="msgLibre">Tu mensaje</label>
+            <textarea id="msgLibre" rows="5" maxlength="500" placeholder="Cuéntanos qué necesitas"></textarea>
+            <small class="error" id="e-msgLibre" role="alert"></small>
+          </div>
+          <button class="boton boton-wa" type="submit">Enviar por WhatsApp</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="pie">
+    <div class="contenedor">
+      <p>Lunes a sábado, 9:00 a. m. a 8:00 p. m. · <span data-direccion>Calle 00 # 00-00</span></p>
+      <p>&copy; <span id="anio">2026</span> Barbería El Arriero Ilustrado. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- VISOR (lightbox): usa <dialog>, que ya trae foco atrapado y cierre con Escape -->
+  <dialog id="visor" class="visor" aria-label="Visor de imágenes">
+    <button type="button" class="visor-btn cerrar" id="visorCerrar" aria-label="Cerrar visor">&times;</button>
+    <button type="button" class="visor-btn ant" id="visorAnt" aria-label="Foto anterior">&#8249;</button>
+    <figure>
+      <img id="visorImg" alt="">
+      <figcaption id="visorPie"></figcaption>
+    </figure>
+    <button type="button" class="visor-btn sig" id="visorSig" aria-label="Foto siguiente">&#8250;</button>
+  </dialog>
+
+  <!-- WHATSAPP FLOTANTE Y VOLVER ARRIBA -->
+  <a class="wa-flotante" href="#contacto" data-wa data-wa-msg="Hola, quisiera información." aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.3 14.8l-.4-.2-2.6.7.7-2.5-.3-.4A8 8 0 0 1 12 4zm-3 3.5c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1 2.3.9 2.8.7 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.4l-1.8-.9c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.6.1-.3-.1-1.1-.4-2-1.3-.8-.7-1.3-1.5-1.4-1.8-.2-.3 0-.4.1-.6l.4-.5c.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5l-.8-2c-.2-.5-.4-.4-.6-.4z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <button type="button" class="arriba" id="arriba" aria-label="Volver arriba">&#8593;</button>
+</body>
+</html>
