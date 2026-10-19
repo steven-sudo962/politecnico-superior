@@ -10,7 +10,7 @@
   <meta name="theme-color" content="#142a25">
   <meta name="description" content="Barbería El Arriero Ilustrado: cortes para hombre y dama, barba, afeitado tradicional, decoloración, tintes y productos para el cabello. Reserva tu turno por WhatsApp.">
   <meta property="og:title" content="Barbería El Arriero Ilustrado">
-  <meta property="og:description" content="Cortes para hombre y dama, barba, color y productos. Reserva tu turno en línea.">
+  <meta property="og:description" content="Cortes, barba y color con atención cercana. Conoce los servicios y solicita tu turno por WhatsApp.">
   <meta property="og:type" content="website">
   <title>Barbería El Arriero Ilustrado | Cortes, barba y color</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -20,7 +20,7 @@
   <!-- config.js: aquí cambias tu WhatsApp, horario y dirección -->
   <script src="config.js" defer></script>
   <script src="script.js" defer></script>
-  <script type="application/ld+json">
+  <script type="application/ld+json" id="datosEstructurados">
   {"@context":"https://schema.org","@type":"HairSalon","name":"Barbería El Arriero Ilustrado","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"20:00"}]}
   </script>
 </head>
@@ -50,14 +50,28 @@
   <main id="contenido">
     <!-- PORTADA -->
     <section class="portada" id="inicio">
-      <div class="contenedor">
-        <p class="portada-sub">Barbería y peluquería</p>
-        <h1>Corte de oficio,<br>trato de caballeros.</h1>
-        <p class="portada-texto">Navaja, tijera y paciencia, para hombres y damas. Corte, barba, color y productos para tu cabello.</p>
-        <div class="portada-acciones">
-          <a class="boton" href="#reservar">Reservar turno</a>
-          <a class="boton boton-claro" href="#contacto" data-wa data-wa-msg="Hola, quisiera información sobre sus servicios.">Escribir por WhatsApp</a>
+      <div class="contenedor portada-contenido">
+        <div class="portada-texto-columna">
+          <p class="portada-sub">Barbería y peluquería</p>
+          <h1>Corte de oficio,<br>trato cercano.</h1>
+          <p class="portada-texto">Navaja, tijera y paciencia. Cortes, barba, color y cuidado para distintos estilos.</p>
+          <div class="portada-acciones">
+            <a class="boton" href="#reservar">Reservar turno</a>
+            <a class="boton boton-claro" href="#contacto" data-wa data-wa-msg="Hola, quisiera información sobre sus servicios.">Escribir por WhatsApp</a>
+          </div>
         </div>
+        <figure class="portada-foto">
+          <img src="degradado.jpg" alt="Corte degradado con diseño en la nuca" width="400" height="500" fetchpriority="high">
+          <figcaption>Un corte para llevar tu estilo a tu manera.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="propuesta" aria-label="Lo que encontrarás">
+      <div class="contenedor propuesta-lista">
+        <div><strong>Servicios para distintos estilos</strong><span>Cortes, barba, color y cuidado.</span></div>
+        <div><strong>Precios a la vista</strong><span>Consulta la carta antes de reservar.</span></div>
+        <div><strong>Atención por WhatsApp</strong><span>Cuéntanos qué necesitas y te orientamos.</span></div>
       </div>
     </section>
 
@@ -65,7 +79,7 @@
     <section class="seccion" id="hombres">
       <div class="contenedor">
         <h2>Cortes y barba para hombre</h2>
-        <p class="intro">Todos los cortes incluyen lavado y peinado final.</p>
+        <p class="intro">Explora las categorías para ver servicios y precios. Todos los cortes incluyen lavado y peinado final.</p>
         <h3 class="grupo">Cortes</h3>
         <ul class="carta">
           <li class="plato" data-servicio="corte" data-cat="hombres" data-nombre="Corte clásico" data-precio="25000" data-min="45" data-desde="0">
@@ -513,16 +527,45 @@
     <section class="seccion seccion-oscura" id="galeria">
       <div class="contenedor">
         <h2>Galería</h2>
-        <ul class="galeria">
-          <li><button type="button" class="foto" aria-label="Ampliar foto: Afeitado con navaja">
+        <p class="galeria-intro">Explora referencias para distintos estilos y cuidados. Las fotografías son ilustrativas: no necesariamente muestran trabajos realizados en la barbería ni productos disponibles.</p>
+        <div class="galeria-filtros" role="group" aria-label="Filtrar imágenes por categoría">
+          <button type="button" class="galeria-chip" data-filtro-galeria="todos" aria-pressed="true">Todos</button>
+          <button type="button" class="galeria-chip" data-filtro-galeria="hombres" aria-pressed="false">Hombres</button>
+          <button type="button" class="galeria-chip" data-filtro-galeria="mujeres" aria-pressed="false">Mujeres</button>
+          <button type="button" class="galeria-chip" data-filtro-galeria="color" aria-pressed="false">Tintes y color</button>
+          <button type="button" class="galeria-chip" data-filtro-galeria="productos" aria-pressed="false">Productos</button>
+        </div>
+        <ul class="galeria" id="galeriaLista">
+          <li data-categoria="hombres"><button type="button" class="foto" aria-label="Ampliar referencia: Afeitado con navaja">
             <img src="afeitado.jpg" alt="Afeitado con navaja" width="400" height="500" loading="lazy"><span>Afeitado</span></button></li>
-          <li><button type="button" class="foto" aria-label="Ampliar foto: Barba perfilada">
+          <li data-categoria="hombres"><button type="button" class="foto" aria-label="Ampliar referencia: Barba perfilada">
             <img src="barba perfilada.jpg" alt="Barba perfilada con degradado lateral" width="400" height="500" loading="lazy"><span>Barba perfilada</span></button></li>
-          <li><button type="button" class="foto" aria-label="Ampliar foto: Corte clásico">
+          <li data-categoria="hombres"><button type="button" class="foto" aria-label="Ampliar referencia: Corte clásico">
             <img src="corte clasico.jpg" alt="Corte clásico con tijera y máquina" width="400" height="500" loading="lazy"><span>Corte clásico</span></button></li>
-          <li><button type="button" class="foto" aria-label="Ampliar foto: Degradado con diseño">
+          <li data-categoria="hombres"><button type="button" class="foto" aria-label="Ampliar referencia: Degradado con diseño">
             <img src="degradado.jpg" alt="Degradado con diseño en la nuca" width="400" height="500" loading="lazy"><span>Degradado</span></button></li>
+          <li data-categoria="hombres"><button type="button" class="foto" aria-label="Ampliar referencia: Perfilado de barba">
+            <img src="imagenes/inspiracion-barba.jpg" alt="Barbero perfilando la barba de un cliente" width="400" height="500" loading="lazy"><span>Perfilado de barba</span></button></li>
+          <li data-categoria="hombres"><button type="button" class="foto" aria-label="Ampliar referencia: Corte degradado">
+            <img src="imagenes/inspiracion-degradado.jpg" alt="Barbero realizando un corte degradado" width="400" height="500" loading="lazy"><span>Corte degradado</span></button></li>
+          <li data-categoria="mujeres"><button type="button" class="foto" aria-label="Ampliar referencia: Cabello largo">
+            <img src="imagenes/inspiracion-cabello-largo.jpg" alt="Cabello largo con ondas y reflejos cálidos" width="400" height="500" loading="lazy"><span>Cabello largo</span></button></li>
+          <li data-categoria="mujeres"><button type="button" class="foto" aria-label="Ampliar referencia: Ondas y peinado">
+            <img src="imagenes/inspiracion-ondas.jpg" alt="Estilista trabajando ondas en el cabello" width="400" height="500" loading="lazy"><span>Ondas y peinado</span></button></li>
+          <li data-categoria="mujeres"><button type="button" class="foto" aria-label="Ampliar referencia: Cabello rizado">
+            <img src="imagenes/inspiracion-rizos.jpg" alt="Cabello rizado con volumen natural" width="400" height="500" loading="lazy"><span>Rizos y textura natural</span></button></li>
+          <li data-categoria="color"><button type="button" class="foto" aria-label="Ampliar referencia: Tonos cálidos">
+            <img src="imagenes/inspiracion-cabello-largo.jpg" alt="Cabello largo con tonos castaños y reflejos cálidos" width="400" height="500" loading="lazy"><span>Tonos cálidos</span></button></li>
+          <li data-categoria="color"><button type="button" class="foto" aria-label="Ampliar referencia: Lavado y cuidado capilar">
+            <img src="imagenes/inspiracion-tratamiento.jpg" alt="Lavado y cuidado del cabello en un salón" width="400" height="500" loading="lazy"><span>Cuidado capilar</span></button></li>
+          <li data-categoria="productos"><button type="button" class="foto" aria-label="Ampliar referencia: Herramientas de barbería">
+            <img src="imagenes/inspiracion-herramientas.jpg" alt="Herramientas y productos de cuidado para barbería" width="400" height="500" loading="lazy"><span>Herramientas de barbería</span></button></li>
+          <li data-categoria="productos"><button type="button" class="foto" aria-label="Ampliar referencia: Tratamiento capilar">
+            <img src="imagenes/inspiracion-mascarilla.jpg" alt="Envase de mascarilla reparadora para el cabello" width="400" height="500" loading="lazy"><span>Tratamiento capilar</span></button></li>
+          <li data-categoria="productos"><button type="button" class="foto" aria-label="Ampliar referencia: Aceite para el cabello y la barba">
+            <img src="imagenes/inspiracion-aceite.jpg" alt="Frasco de aceite para cuidado capilar y de barba" width="400" height="500" loading="lazy"><span>Aceites de cuidado</span></button></li>
         </ul>
+        <p class="galeria-creditos">Fotografías de referencia de <a href="https://unsplash.com/license" target="_blank" rel="noopener noreferrer">Unsplash</a>.</p>
       </div>
     </section>
 
@@ -621,9 +664,9 @@
             <a class="boton boton-fantasma" href="#contacto" data-tel>Llamar</a>
           </p>
           <ul class="datos">
-            <li><strong>Horario</strong><span>Lunes a sábado, 9:00 a. m. a 8:00 p. m.</span></li>
-            <li><strong>Dirección</strong><span data-direccion>Calle 00 # 00-00</span></li>
-            <li><a href="#contacto" data-mapa target="_blank" rel="noopener noreferrer">Cómo llegar</a></li>
+            <li><strong>Horario</strong><span data-horario>Lunes a sábado, 9:00 a. m. a 8:00 p. m.</span></li>
+            <li data-contacto-direccion hidden><strong>Dirección</strong><span data-direccion></span></li>
+            <li><a href="#contacto" data-mapa target="_blank" rel="noopener noreferrer" hidden>Cómo llegar</a></li>
           </ul>
         </div>
         <form id="formMensaje" novalidate>
@@ -642,7 +685,7 @@
   <!-- PIE DE PÁGINA -->
   <footer class="pie">
     <div class="contenedor">
-      <p>Lunes a sábado, 9:00 a. m. a 8:00 p. m. · <span data-direccion>Calle 00 # 00-00</span></p>
+      <p><span data-horario>Lunes a sábado, 9:00 a. m. a 8:00 p. m.</span><span data-footer-direccion hidden> · <span data-direccion></span></span></p>
       <p>&copy; <span id="anio">2026</span> Barbería El Arriero Ilustrado. Todos los derechos reservados.</p>
     </div>
   </footer>

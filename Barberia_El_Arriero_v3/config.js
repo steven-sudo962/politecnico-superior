@@ -4,9 +4,9 @@ window.ARRIERO = {
   // WhatsApp del negocio: código de país + número, solo dígitos (sin +, espacios ni guiones).
   // Ejemplo Colombia: 573001234567
   whatsapp: "573128787128",
-  telefonoVisible: "+57 312 878 7128", // Opcional: si quieres mostrar un telefono en la web, ponlo aqui. si no, dejalo vacio.
+  telefonoVisible: "+57 312 878 7128", // Número para el enlace de llamada.
 
-  direccion: "Calle 00 # 00-00",
+  direccion: "calle 7#5-32 corregimiento de EL TIPLE", // Completa con la dirección real para mostrarla y activar el mapa.
 
   // Horario de reservas
   diasAbierto: [1, 2, 3, 4, 5, 6],   // 0 = domingo, 1 = lunes ... 6 = sábado

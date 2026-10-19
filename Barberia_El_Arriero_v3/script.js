@@ -30,7 +30,8 @@
     menuBtn.setAttribute("aria-expanded", String(abierto));
   });
   menu.addEventListener("click", function (e) {
-    if (e.target.tagName === "A") cerrarMenu();
+    var enlace = e.target.closest ? e.target.closest("a") : null;
+    if (enlace) cerrarMenu();
   });
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") cerrarMenu();
@@ -80,14 +81,48 @@
     a.rel = "noopener noreferrer";
   });
   Array.prototype.forEach.call(document.querySelectorAll("[data-tel]"), function (a) {
-    a.href = "tel:+" + WA;
+    var telefono = String(CFG.telefonoVisible || WA).replace(/\D/g, "");
+    a.href = "tel:+" + telefono;
   });
+  var direccion = String(CFG.direccion || "").trim();
   Array.prototype.forEach.call(document.querySelectorAll("[data-direccion]"), function (el) {
-    if (CFG.direccion) el.textContent = CFG.direccion;
+    el.textContent = direccion;
   });
   Array.prototype.forEach.call(document.querySelectorAll("[data-mapa]"), function (a) {
-    a.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(CFG.direccion || "");
+    a.hidden = !direccion;
+    if (direccion) a.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(direccion);
   });
+  var filaDireccion = document.querySelector("[data-contacto-direccion]");
+  if (filaDireccion) filaDireccion.hidden = !direccion;
+  var direccionPie = document.querySelector("[data-footer-direccion]");
+  if (direccionPie) direccionPie.hidden = !direccion;
+
+  var nombresDias = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+  var diasAbierto = CFG.diasAbierto || [1, 2, 3, 4, 5, 6];
+  var diasTexto = diasAbierto.length === 6 && diasAbierto.every(function (d, i) { return d === i + 1; })
+    ? "Lunes a sábado"
+    : diasAbierto.map(function (d) { return nombresDias[d]; }).filter(Boolean).join(", ");
+  var horario = diasTexto
+    ? diasTexto + ", " + fmtHora(aMinutos(CFG.apertura || "09:00")) + " a " + fmtHora(aMinutos(CFG.cierre || "20:00"))
+    : "Horario por confirmar";
+  Array.prototype.forEach.call(document.querySelectorAll("[data-horario]"), function (el) {
+    el.textContent = horario;
+  });
+  var datosEstructurados = $("datosEstructurados");
+  if (datosEstructurados) {
+    var schema = JSON.parse(datosEstructurados.textContent);
+    schema.openingHoursSpecification = diasAbierto.length ? [{
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: diasAbierto.map(function (d) {
+        return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][d];
+      }).filter(Boolean),
+      opens: CFG.apertura || "09:00",
+      closes: CFG.cierre || "20:00"
+    }] : [];
+    if (CFG.telefonoVisible) schema.telephone = CFG.telefonoVisible;
+    if (direccion) schema.address = direccion;
+    datosEstructurados.textContent = JSON.stringify(schema);
+  }
 
   /* ---------- 5. Mensaje libre por WhatsApp (sección contacto) ---------- */
   var formMensaje = $("formMensaje");
@@ -117,10 +152,64 @@
       });
     });
   });
+  var filtrosGaleria = document.querySelectorAll("[data-filtro-galeria]");
+  var fotosGaleria = document.querySelectorAll("#galeriaLista [data-categoria]");
+  Array.prototype.forEach.call(filtrosGaleria, function (filtro) {
+    filtro.addEventListener("click", function () {
+      var categoria = filtro.getAttribute("data-filtro-galeria");
+      Array.prototype.forEach.call(filtrosGaleria, function (otro) {
+        otro.setAttribute("aria-pressed", String(otro === filtro));
+      });
+      Array.prototype.forEach.call(fotosGaleria, function (elemento) {
+        elemento.hidden = categoria !== "todos" && elemento.getAttribute("data-categoria") !== categoria;
+      });
+    });
+  });
 
   /* ---------- 7. RESERVA POR PASOS ----------
      Los servicios se leen del HTML (atributos data-*), así que si cambias un
      precio o agregas un servicio en index.html, la reserva se actualiza sola. */
+  function prepararCatalogo() {
+    Array.prototype.forEach.call(document.querySelectorAll("section.seccion"), function (seccion) {
+      var titulos = seccion.querySelectorAll("h3.grupo");
+      Array.prototype.forEach.call(titulos, function (titulo, indice) {
+        var lista = titulo.nextElementSibling;
+        if (!lista || !lista.classList.contains("carta")) return;
+
+        var detalle = document.createElement("details");
+        var resumen = crear("summary", "grupo");
+        var encabezado = crear("h3", "grupo-titulo", titulo.textContent);
+        detalle.className = "grupo-servicios";
+        detalle.open = indice === 0;
+        resumen.appendChild(encabezado);
+        titulo.parentNode.insertBefore(detalle, titulo);
+        detalle.appendChild(resumen);
+        detalle.appendChild(lista);
+        titulo.remove();
+      });
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll("[data-servicio]"), function (li) {
+      var nombre = li.getAttribute("data-nombre");
+      var precio = Number(li.getAttribute("data-precio"));
+      var minutos = Number(li.getAttribute("data-min"));
+      var desde = li.getAttribute("data-desde") === "1";
+      var titulo = li.querySelector(".plato-info h4");
+      var tiempo = li.querySelector(".duracion");
+      var precioEl = li.querySelector(".plato-precio");
+      var boton = li.querySelector("[data-reservar]");
+      if (titulo) titulo.textContent = nombre;
+      if (tiempo) tiempo.textContent = duracion(minutos);
+      if (precioEl) {
+        precioEl.textContent = "";
+        if (desde) precioEl.appendChild(crear("span", "desde", "desde"));
+        precioEl.appendChild(document.createTextNode(" " + dinero(precio)));
+      }
+      if (boton) boton.setAttribute("aria-label", "Reservar " + nombre);
+    });
+  }
+  prepararCatalogo();
+
   var servicios = Array.prototype.map.call(document.querySelectorAll("[data-servicio]"), function (li) {
     return {
       id: li.getAttribute("data-servicio"),
@@ -414,7 +503,9 @@
           dia: clave(r.fecha), minutoInicio: r.hora, duracionMin: r.totales.min,
           nombre: r.nombre, telefono: r.telefono, notas: r.notas
         })
-      }).catch(function () { /* el mensaje de WhatsApp ya salió; no bloqueamos al cliente */ });
+      }).catch(function () {
+        error("No pudimos registrar la solicitud automáticamente. Envía el mensaje de WhatsApp para coordinar tu turno.");
+      });
     }
     $("reabrirWa").href = ultimaURL;
     irPaso(5);
@@ -437,6 +528,8 @@
     if (!inp) return;
     if (reserva.paso === 5) $("otraReserva").click();
     if (!inp.checked) { inp.checked = true; inp.dispatchEvent(new Event("change")); }
+    var grupoCatalogo = b.closest(".grupo-servicios");
+    if (grupoCatalogo) grupoCatalogo.open = true;
     var det = inp.closest("details");
     if (det) det.open = true;
     irPaso(1, false);
@@ -473,6 +566,11 @@
   var visorPie = $("visorPie");
   var fotos = Array.prototype.slice.call(document.querySelectorAll(".galeria .foto img"));
   var actual = 0;
+  function fotosVisibles() {
+    return fotos.filter(function (img) {
+      return !img.closest("li").hidden && !img.closest("button").classList.contains("sin-foto");
+    });
+  }
 
   // Si una foto no existe todavía, el recuadro muestra su título en vez de un icono roto
   fotos.forEach(function (img) {
@@ -482,22 +580,26 @@
   });
 
   function mostrarFoto(i) {
-    actual = (i + fotos.length) % fotos.length;
-    visorImg.src = fotos[actual].getAttribute("src");
-    visorImg.alt = fotos[actual].alt;
-    visorPie.textContent = fotos[actual].alt;
+    var visibles = fotosVisibles();
+    if (!visibles.length) return;
+    actual = (i + visibles.length) % visibles.length;
+    visorImg.src = visibles[actual].getAttribute("src");
+    visorImg.alt = visibles[actual].alt;
+    visorPie.textContent = visibles[actual].alt;
   }
   function abrirVisor(i) {
     if (typeof visor.showModal !== "function") return;
-    if (fotos[i].closest("button").classList.contains("sin-foto")) return;
     mostrarFoto(i);
     visor.showModal();
     document.documentElement.classList.add("sin-scroll");
   }
   function cerrarVisor() { if (visor.open) visor.close(); }
 
-  fotos.forEach(function (img, i) {
-    img.closest("button").addEventListener("click", function () { abrirVisor(i); });
+  fotos.forEach(function (img) {
+    img.closest("button").addEventListener("click", function () {
+      var visibles = fotosVisibles();
+      abrirVisor(visibles.indexOf(img));
+    });
   });
   $("visorCerrar").addEventListener("click", cerrarVisor);
   $("visorAnt").addEventListener("click", function () { mostrarFoto(actual - 1); });
