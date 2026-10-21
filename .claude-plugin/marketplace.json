@@ -1,0 +1,14 @@
+{
+    "name": "steven-sudo962","owner":{
+        "name":"johan"
+    },
+    "plugins":[
+        {
+            "name":"omniroute-marketplace",
+            "source":"./",
+            "description": "gateway local Omniroute"
+
+    }
+]
+
+}
